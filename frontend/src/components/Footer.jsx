@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Linkedin, Facebook, Twitter } from 'lucide-react';
-
-const contactInfo = {
-  address:
-    'Factory # 3-96, Sy. No. 171/A, Chinnaravirala (V), Hayathnagar (M), Rangareddy, Telangana - 501505',
-  email: 'vaamantexprint@gmail.com',
-};
+import { brand, company } from '../data/siteContent';
+import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
@@ -15,100 +10,82 @@ const quickLinks = [
   { name: 'Contact', path: '/contact' },
 ];
 
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="bg-ink text-surface border-t border-line">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <h2 className="text-2xl font-serif font-bold text-surface mb-1">
-              Vaaman Texprint
+    <footer className="relative border-t border-lineDark bg-charcoal text-snow">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-dark opacity-90" />
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <p className="text-xs uppercase tracking-[0.35em] text-gold/90">Vaaman Texprint</p>
+            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight md:text-4xl">
+              {brand.legalName}
             </h2>
-            <p className="text-gold text-sm tracking-wider mb-4">Private Limited</p>
-            <p className="text-slate mb-6 leading-relaxed max-w-md">
-              Precision in Textile Processing & Manufacturing. Over 22 years of
-              expertise in delivering quality textile solutions.
-            </p>
-            <div className="flex space-x-3">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-surface/10 flex items-center justify-center hover:bg-gold/20 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="text-gold" size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-surface/10 flex items-center justify-center hover:bg-gold/20 transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="text-gold" size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-surface/10 flex items-center justify-center hover:bg-gold/20 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="text-gold" size={20} />
-              </a>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-slate">{company.heroSubtext}</p>
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-gold transition hover:gap-3"
+            >
+              Start a project
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-4">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-snow/90">Explore</h3>
+              <ul className="mt-5 space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="text-sm text-slate transition hover:text-gold"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-snow/90">Contact</h3>
+              <ul className="mt-5 space-y-4 text-sm text-slate">
+                <li className="flex gap-3">
+                  <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold" />
+                  <span className="leading-relaxed">{company.contact.addressDisplay}</span>
+                </li>
+                <li className="flex gap-3">
+                  <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold" />
+                  <a href={`mailto:${company.contact.email}`} className="hover:text-gold">
+                    {company.contact.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:+91${company.contact.phone}`} className="hover:text-gold">
+                    +91 {company.contact.phone}
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold text-surface mb-6 font-serif">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-slate hover:text-gold transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold text-surface mb-6 font-serif">
-              Contact Info
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="text-gold flex-shrink-0 mt-1" size={18} />
-                <span className="text-slate text-sm leading-relaxed">
-                  {contactInfo.address}
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="text-gold flex-shrink-0" size={18} />
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-slate hover:text-gold transition-colors text-sm"
-                >
-                  {contactInfo.email}
-                </a>
-              </li>
-            </ul>
+          <div className="glass-dark flex flex-col justify-between rounded-2xl p-6 lg:col-span-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-gold/90">Direct line</p>
+              <p className="mt-3 text-sm text-slate">{company.contact.contactPerson}</p>
+            </div>
+            <p className="mt-6 text-xs leading-relaxed text-slate/80">
+              Export-oriented processing with disciplined quality systems and on-time dispatch.
+            </p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-line mt-12 pt-8 text-center">
-          <p className="text-slate/70 text-sm">
-            © {new Date().getFullYear()} Vaaman Texprint Private Limited. All
-            rights reserved.
-          </p>
+        <div className="divider-gold mt-14 opacity-60" />
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-slate/70 sm:flex-row">
+          <p>© {new Date().getFullYear()} {brand.legalName}. All rights reserved.</p>
+          <p className="uppercase tracking-[0.2em]">Hayathnagar · Telangana · India</p>
         </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;

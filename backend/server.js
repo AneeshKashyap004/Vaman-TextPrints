@@ -24,12 +24,19 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/vaaman-te
 .then(() => console.log('MongoDB connected successfully'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
+// Marketing site focus: public APIs only unless ENABLE_ADMIN_API=true
+const adminApi = process.env.ENABLE_ADMIN_API === 'true';
+
 // Routes
-app.use('/api/auth', authRoutes);
+if (adminApi) {
+  app.use('/api/auth', authRoutes);
+  app.use('/api/messages', messageRoutes);
+} else {
+  console.log('Admin API routes disabled. Set ENABLE_ADMIN_API=true to mount /api/auth and /api/messages.');
+}
 app.use('/api/content', contentRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/api/messages', messageRoutes);
 app.use('/api/upload', uploadRoutes);
 
 // Health check

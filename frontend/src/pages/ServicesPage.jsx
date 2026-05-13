@@ -1,136 +1,127 @@
+import {
+  Droplets,
+  Cog,
+  Shirt,
+  Layers,
+  Wind,
+  Leaf,
+  StretchHorizontal,
+  Printer,
+  Sparkles,
+  ArrowUpRight,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
-import { company } from '../data/siteContent';
-import { Droplets, Shirt, Layers, Sparkles, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import InnerHero from '../components/InnerHero';
+import Reveal from '../components/Reveal';
+import SectionHeading from '../components/SectionHeading';
+import ImageFrame from '../components/ImageFrame';
+import PremiumButton from '../components/PremiumButton';
+import { images, servicesDetailed } from '../data/siteContent';
 
-const serviceIcons = {
-  'Dyeing & Processing': Droplets,
-  'Textile Manufacturing': Shirt,
-  'Polycot Fabric Processing': Layers,
-  'Industrial Finishing': Sparkles,
+const iconById = {
+  dyeing: Droplets,
+  'textile-processing': Cog,
+  cotton: Shirt,
+  'polyester-cotton': Layers,
+  viscose: Wind,
+  lyocell: Leaf,
+  'cotton-lycra': StretchHorizontal,
+  printing: Printer,
+  finishing: Sparkles,
 };
 
-function ServicesPage() {
+const visuals = [images.heroServices, images.textileDetail, images.factoryFloor];
+
+export default function ServicesPage() {
   return (
     <PageTransition>
-      {/* Hero Section */}
-      <section className="relative bg-ink text-surface py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <span className="text-gold text-sm tracking-[0.2em] uppercase mb-4 block">
-              Our Services
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
-              Comprehensive Textile Solutions
-            </h1>
-            <p className="text-lg text-slate leading-relaxed max-w-2xl">
-              From dyeing and processing to manufacturing and finishing, we provide
-              end-to-end textile services with precision and reliability.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <InnerHero
+        image={images.heroServices}
+        eyebrow="Services"
+        title="Processing disciplines — each tuned to fibre behaviour"
+        subtitle="Dyeing, preparation, printing, and finishing orchestrated as one coherent manufacturing system."
+      />
 
-      {/* Services Grid */}
-      <section className="py-20 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {company.services.map((service, index) => {
-              const Icon = serviceIcons[service.title] || Sparkles;
+      <section className="py-section px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Programmes"
+            title="Nine specialist tracks — one quality bar"
+            align="center"
+            subtitle="Select a track to understand how we engineer outcomes for your fabric class and end-market."
+          />
+          <div className="mt-6 space-y-24 md:space-y-28">
+            {servicesDetailed.map((svc, index) => {
+              const Icon = iconById[svc.id] || Sparkles;
+              const img = visuals[index % visuals.length];
+              const reverse = index % 2 === 1;
               return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group bg-white rounded-2xl p-8 shadow-card border border-line hover:shadow-soft transition-shadow"
-                >
-                  <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
-                    <Icon className="text-gold" size={28} />
+                <Reveal key={svc.id}>
+                  <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      className={`relative ${reverse ? 'lg:order-2' : ''}`}
+                    >
+                      <ImageFrame src={img} alt={svc.title} aspect="aspect-[5/4]" />
+                      <div className="pointer-events-none absolute -bottom-6 -right-4 hidden rounded-2xl border border-line bg-white/90 px-5 py-4 text-ink shadow-lift backdrop-blur-md md:block">
+                        <p className="text-[10px] uppercase tracking-[0.28em] text-gold">Service</p>
+                        <p className="mt-1 font-serif text-lg">{svc.title}</p>
+                      </div>
+                    </motion.div>
+                    <div className={reverse ? 'lg:order-1' : ''}>
+                      <div className="inline-flex items-center gap-3 rounded-full border border-line bg-white px-4 py-2 shadow-card">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/12 text-gold">
+                          <Icon className="h-5 w-5" strokeWidth={1.5} />
+                        </span>
+                        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-slate">
+                          {String(index + 1).padStart(2, '0')} — Track
+                        </span>
+                      </div>
+                      <h3 className="mt-8 font-serif text-3xl text-ink md:text-4xl">{svc.title}</h3>
+                      <p className="mt-4 text-lg text-slate/95">{svc.summary}</p>
+                      <p className="mt-5 text-sm leading-relaxed text-slate">{svc.body}</p>
+                      <ul className="mt-8 space-y-3">
+                        {svc.features.map((f) => (
+                          <li key={f} className="flex items-start gap-3 text-sm text-ink/85">
+                            <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-gold" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      <PremiumButton to="/contact" variant="outline" className="mt-10">
+                        Discuss this track
+                        <ArrowUpRight className="h-4 w-4" />
+                      </PremiumButton>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-serif font-bold text-ink mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 text-gold font-medium hover:gap-3 transition-all"
-                  >
-                    Learn More <ArrowRight size={18} />
-                  </Link>
-                </motion.div>
+                </Reveal>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-gold text-sm tracking-[0.2em] uppercase mb-4 block">
-              Our Process
-            </span>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-ink">
-              How We Work
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Consultation', desc: 'Understanding your requirements' },
-              { step: '02', title: 'Planning', desc: 'Detailed production roadmap' },
-              { step: '03', title: 'Execution', desc: 'Precision manufacturing' },
-              { step: '04', title: 'Delivery', desc: 'Quality-checked dispatch' },
-            ].map((item, index) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-5xl font-serif font-bold text-gold/30 mb-4">
-                  {item.step}
-                </div>
-                <h3 className="text-xl font-serif font-bold text-ink mb-2">{item.title}</h3>
-                <p className="text-slate">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-ink text-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-            Have a Project in Mind?
-          </h2>
-          <p className="text-slate mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how we can bring your textile vision to life with our expertise.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-gold text-ink font-semibold px-8 py-4 rounded-lg hover:bg-gold/90 transition-colors"
-          >
-            Start a Conversation
-            <ArrowRight size={20} />
-          </Link>
+      <section className="border-t border-line bg-charcoal py-section-lg text-snow px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold/90">Next step</p>
+            <h3 className="mt-4 font-serif text-3xl md:text-4xl">Share specifications. We respond with clarity.</h3>
+            <p className="mt-5 text-slate">
+              Trials, lab dips, approvals, and scale-up — structured with transparent timelines.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <PremiumButton to="/contact" variant="gold">
+                Request consultation
+              </PremiumButton>
+              <PremiumButton to="/infrastructure" variant="ghost" className="text-snow border-white/15 hover:bg-white/5">
+                View plant capability
+              </PremiumButton>
+            </div>
+          </Reveal>
         </div>
       </section>
     </PageTransition>
   );
 }
-
-export default ServicesPage;

@@ -1,129 +1,119 @@
-import { motion } from 'framer-motion';
+import { Target, Sparkles, Building2 } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
-import { company } from '../data/siteContent';
-import { ArrowRight, Award, Users, Factory } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import InnerHero from '../components/InnerHero';
+import Reveal from '../components/Reveal';
+import SectionHeading from '../components/SectionHeading';
+import ImageFrame from '../components/ImageFrame';
+import PremiumButton from '../components/PremiumButton';
+import AnimatedCounter from '../components/AnimatedCounter';
+import {
+  company,
+  images,
+  timeline,
+  infrastructureHighlights,
+} from '../data/siteContent';
 
-function AboutPage() {
+export default function AboutPage() {
   return (
     <PageTransition>
-      {/* Hero Section */}
-      <section className="relative bg-ink text-surface py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <span className="text-gold text-sm tracking-[0.2em] uppercase mb-4 block">
-              About Us
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
-              Two Decades of Textile Excellence
-            </h1>
-            <p className="text-lg text-slate leading-relaxed max-w-2xl">
-              {company.about}
-            </p>
-          </motion.div>
+      <InnerHero
+        image={images.heroAbout}
+        eyebrow="About Vaaman Texprint"
+        title="Heritage of processing. Built for global benchmarks."
+        subtitle={company.about}
+      />
+
+      <section className="py-section px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-3">
+          <Reveal className="rounded-3xl border border-line bg-white p-10 shadow-card lg:col-span-1">
+            <Target className="h-9 w-9 text-gold" />
+            <h3 className="mt-6 font-serif text-2xl text-ink">Vision</h3>
+            <p className="mt-4 text-sm leading-relaxed text-slate">{company.vision}</p>
+          </Reveal>
+          <Reveal delay={0.06} className="rounded-3xl border border-line bg-navy p-10 text-snow shadow-lift lg:col-span-2">
+            <Sparkles className="h-9 w-9 text-gold" />
+            <h3 className="mt-6 font-serif text-2xl">Journey</h3>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate">{company.background}</p>
+          </Reveal>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            {company.counters.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-card border border-line"
-              >
-                <div className="text-4xl md:text-5xl font-serif font-bold text-gold mb-2">
-                  {stat.value}
+      <section className="border-y border-line bg-white py-section px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Timeline"
+            title="Measured expansion — never at the cost of control"
+            align="center"
+            subtitle="From a focused cotton–polyester foundation to a multi-fibre processing platform."
+          />
+          <div className="relative mx-auto mt-16 max-w-2xl border-l border-gold/25 pl-10 md:pl-14">
+            {timeline.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.08}>
+                <div className="relative pb-14 last:pb-0">
+                  <span className="absolute -left-[21px] top-2 flex h-3 w-3 rounded-full border-2 border-gold bg-surface shadow-[0_0_0_6px_rgba(201,161,74,0.12)] md:-left-[25px]" />
+                  <div className="rounded-2xl border border-line bg-surface p-8 shadow-card transition hover:border-gold/20 hover:shadow-soft">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">{item.year}</p>
+                    <h4 className="mt-3 font-serif text-xl text-ink">{item.title}</h4>
+                    <p className="mt-3 text-sm text-slate">{item.detail}</p>
+                  </div>
                 </div>
-                <div className="text-ink font-medium">{stat.label}</div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Award className="text-gold" size={32} />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-ink mb-3">Quality First</h3>
-              <p className="text-slate">
-                Uncompromising standards in every process, from raw material to finished fabric.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="text-gold" size={32} />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-ink mb-3">Expert Team</h3>
-              <p className="text-slate">
-                Skilled professionals with decades of combined experience in textile manufacturing.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Factory className="text-gold" size={32} />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-ink mb-3">Modern Infrastructure</h3>
-              <p className="text-slate">
-                State-of-the-art facilities designed for efficiency, quality, and scale.
-              </p>
-            </motion.div>
+      <section className="py-section px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <ImageFrame src={images.factoryFloor} alt="Manufacturing environment" />
+          </Reveal>
+          <div>
+            <SectionHeading
+              eyebrow="Infrastructure"
+              title="Engineered spaces for throughput and repeatability"
+              subtitle="Production is organized around flow, safety, and measurable quality — so approvals scale into steady supply."
+            />
+            <ul className="mt-8 space-y-4">
+              {infrastructureHighlights.map((line) => (
+                <li key={line} className="flex gap-3 text-sm text-slate">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <PremiumButton to="/infrastructure" variant="gold" className="mt-10">
+              Explore machinery
+            </PremiumButton>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-ink text-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-            Ready to Work Together?
-          </h2>
-          <p className="text-slate mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how our textile expertise can support your manufacturing needs.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-gold text-ink font-semibold px-8 py-4 rounded-lg hover:bg-gold/90 transition-colors"
-          >
-            Get in Touch
-            <ArrowRight size={20} />
-          </Link>
+      <section className="bg-charcoal py-section text-snow px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-3">
+          {company.counters.slice(0, 3).map((c) => (
+            <Reveal key={c.label}>
+              <div className="rounded-2xl border border-lineDark bg-white/[0.04] p-8 text-center backdrop-blur-md">
+                <div className="font-serif text-4xl text-gold">
+                  <AnimatedCounter numeric={c.numeric} suffix={c.suffix} duration={c.duration} />
+                </div>
+                <p className="mt-3 text-xs uppercase tracking-[0.2em] text-slate">{c.label}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
+      </section>
+
+      <section className="py-section px-4 sm:px-6 lg:px-8">
+        <Reveal className="mx-auto flex max-w-4xl flex-col items-center rounded-3xl border border-line bg-gradient-to-br from-white to-surface px-8 py-14 text-center shadow-soft">
+          <Building2 className="h-10 w-10 text-gold" />
+          <h3 className="mt-6 font-serif text-3xl text-ink">Visit the narrative in person</h3>
+          <p className="mt-4 text-slate">Walk the ranges, review quality systems, and align on program expectations.</p>
+          <PremiumButton to="/contact" variant="outline" className="mt-8">
+            Schedule a conversation
+          </PremiumButton>
+        </Reveal>
       </section>
     </PageTransition>
   );
 }
-
-export default AboutPage;

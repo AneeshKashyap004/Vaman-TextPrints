@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
@@ -11,131 +11,145 @@ const navItems = [
   { name: 'Contact', path: '/contact' },
 ];
 
-// Premium textile-inspired logo icon
 function LogoIcon({ className }) {
   return (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Fabric wave pattern */}
-      <path
-        d="M4 32c6-4 12-2 16 2s10 6 16 2"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 24c6-4 12-2 16 2s10 6 16 2"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 16c6-4 12-2 16 2s10 6 16 2"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 8c6-4 12-2 16 2s10 6 16 2"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden>
+      <path d="M4 32c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
+      <path d="M4 24c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
+      <path d="M4 16c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
+      <path d="M4 8c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
     </svg>
   );
 }
 
-function Navbar() {
+function NavItem({ to, children, overlay }) {
+  return (
+    <NavLink to={to} className="group relative px-1 py-2">
+      {({ isActive }) => (
+        <>
+          <span
+            className={`text-[13px] font-medium tracking-[0.12em] uppercase transition-colors duration-300 ${
+              overlay
+                ? isActive
+                  ? 'text-gold'
+                  : 'text-snow/75 group-hover:text-snow'
+                : isActive
+                  ? 'text-gold'
+                  : 'text-slate group-hover:text-ink'
+            }`}
+          >
+            {children}
+          </span>
+          <span
+            className={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-px origin-left scale-x-0 transform bg-gold transition-transform duration-300 ease-luxury group-hover:scale-x-100 ${
+              isActive ? 'scale-x-100' : ''
+            }`}
+          />
+        </>
+      )}
+    </NavLink>
+  );
+}
+
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const reduce = useReducedMotion();
+
+  const isHome = pathname === '/';
+  const overlayMode = isHome && !isScrolled;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [pathname]);
 
-  const linkClasses = ({ isActive }) =>
-    `text-sm font-medium tracking-wide transition-colors duration-200 ${
-      isActive
-        ? 'text-gold'
-        : 'text-slate hover:text-ink'
-    }`;
+  useEffect(() => {
+    requestAnimationFrame(() => setOpen(false));
+  }, [pathname]);
+
+  const shell = overlayMode
+    ? 'border-transparent bg-transparent text-snow shadow-none'
+    : 'border-line/80 bg-surface/90 text-ink shadow-soft backdrop-blur-xl';
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-        isScrolled
-          ? 'bg-surface/95 backdrop-blur-md border-line shadow-soft'
-          : 'bg-surface border-transparent'
-      }`}
+    <motion.header
+      initial={reduce ? false : { y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ease-luxury ${shell}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <LogoIcon className="w-8 h-8 text-gold transition-transform group-hover:scale-105" />
-            <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-serif font-semibold text-ink tracking-tight">
-                Vaaman Texprint
-              </span>
-              <span className="text-[10px] md:text-xs text-slate tracking-[0.2em] uppercase">
-                Private Limited
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <NavLink key={item.name} to={item.path} className={linkClasses}>
-                {item.name}
-              </NavLink>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-ink hover:text-gold transition-colors p-2"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
+      <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex items-center gap-3 outline-none">
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-surface border-t border-line overflow-hidden"
+            whileHover={reduce ? {} : { rotate: [0, -2, 2, 0] }}
+            transition={{ duration: 0.6 }}
+            className={`flex h-11 w-11 items-center justify-center rounded-2xl border transition-colors duration-300 ${
+              overlayMode
+                ? 'border-white/15 bg-white/5 text-gold'
+                : 'border-line bg-surface text-gold shadow-card'
+            }`}
           >
-            <div className="px-4 py-4 space-y-1">
+            <LogoIcon className="h-7 w-7" />
+          </motion.div>
+          <div className="flex flex-col leading-none">
+            <span
+              className={`font-serif text-lg font-semibold tracking-tight transition-colors md:text-xl ${
+                overlayMode ? 'text-snow' : 'text-ink'
+              }`}
+            >
+              Vaaman Texprint
+            </span>
+            <span
+              className={`mt-1 text-[9px] font-medium uppercase tracking-[0.22em] transition-colors md:text-[10px] ${
+                overlayMode ? 'text-snow/55' : 'text-slate'
+              }`}
+            >
+              Private Limited
+            </span>
+          </div>
+        </Link>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {navItems.map((item) => (
+            <NavItem key={item.path} to={item.path} overlay={overlayMode}>
+              {item.name}
+            </NavItem>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={`rounded-xl p-2.5 md:hidden ${overlayMode ? 'text-snow' : 'text-ink'}`}
+          aria-expanded={open}
+          aria-label="Toggle navigation"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="border-t border-line/80 bg-surface/98 backdrop-blur-xl md:hidden"
+          >
+            <div className="flex flex-col gap-1 px-4 py-4">
               {navItems.map((item) => (
                 <NavLink
-                  key={item.name}
+                  key={item.path}
                   to={item.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block px-3 py-3 text-base font-medium transition-colors ${
-                      isActive
-                        ? 'text-gold bg-ink/5'
-                        : 'text-slate hover:text-ink hover:bg-ink/5'
-                    } rounded-lg`
+                    `rounded-xl px-4 py-3 text-sm font-medium uppercase tracking-[0.14em] transition-colors ${
+                      isActive ? 'bg-navy text-gold' : 'text-ink/80 hover:bg-navy/5'
+                    }`
                   }
                 >
                   {item.name}
@@ -145,8 +159,6 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   );
 }
-
-export default Navbar;

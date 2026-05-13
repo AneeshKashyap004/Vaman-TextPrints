@@ -1,60 +1,93 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SiteLayout from './layouts/SiteLayout';
-import Home from './pages/Home';
-import AboutPage from './pages/AboutPage';
-import ServicesPage from './pages/ServicesPage';
-import InfrastructurePage from './pages/InfrastructurePage';
-import ContactPage from './pages/ContactPage';
+
+const Home = lazy(() => import('./pages/Home'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const InfrastructurePage = lazy(() => import('./pages/InfrastructurePage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+
+/** BrowserRouter is not a "data router" — ScrollRestoration is unsupported; scroll on navigation instead. */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function PageLoader() {
+  return (
+    <div className="flex min-h-[70vh] items-center justify-center bg-charcoal">
+      <motion.div
+        className="flex flex-col items-center gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <motion.div
+          className="h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent"
+          animate={{ opacity: [0.35, 1, 0.35] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <p className="text-xs font-medium uppercase tracking-[0.45em] text-gold/90">Vaaman Texprint</p>
+      </motion.div>
+    </div>
+  );
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <SiteLayout>
-              <Home />
-            </SiteLayout>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <SiteLayout>
-              <AboutPage />
-            </SiteLayout>
-          }
-        />
-        <Route
-          path="/services"
-          element={
-            <SiteLayout>
-              <ServicesPage />
-            </SiteLayout>
-          }
-        />
-        <Route
-          path="/infrastructure"
-          element={
-            <SiteLayout>
-              <InfrastructurePage />
-            </SiteLayout>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <SiteLayout>
-              <ContactPage />
-            </SiteLayout>
-          }
-        />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <ScrollToTop />
+      <Suspense fallback={<PageLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <SiteLayout>
+                <Home />
+              </SiteLayout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <SiteLayout>
+                <AboutPage />
+              </SiteLayout>
+            }
+          />
+          <Route
+            path="/services"
+            element={
+              <SiteLayout>
+                <ServicesPage />
+              </SiteLayout>
+            }
+          />
+          <Route
+            path="/infrastructure"
+            element={
+              <SiteLayout>
+                <InfrastructurePage />
+              </SiteLayout>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <SiteLayout>
+                <ContactPage />
+              </SiteLayout>
+            }
+          />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

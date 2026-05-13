@@ -1,59 +1,213 @@
+/** Central content & media configuration — swap image URLs when assets are ready */
+
 export const brand = {
-  name: 'Vaaman Texprint Private Limited',
-  tagline: 'Precision in Textile Processing & Manufacturing',
+  legalName: 'Vaaman Texprint Private Limited',
+  shortName: 'Vaaman Texprint',
+  tagline: 'Engineering excellence in textile processing',
+};
+
+export const images = {
+  heroHome:
+    'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=2400&q=80',
+  heroAbout:
+    'https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=2400&q=80',
+  heroServices:
+    'https://images.unsplash.com/photo-1465120232534-6129eec94400?auto=format&fit=crop&w=2400&q=80',
+  heroInfrastructure:
+    'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=80',
+  heroContact:
+    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2400&q=80',
+  textileDetail:
+    'https://images.unsplash.com/photo-1618415510828-92d0ccd8c22a?auto=format&fit=crop&w=1600&q=80',
+  factoryFloor:
+    'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1600&q=80',
 };
 
 export const company = {
+  heroEyebrow: 'Vaaman Texprint Private Limited',
   heroHeading: 'Engineering Excellence in Textile Processing',
   heroSubtext:
-    'Over 22 years of expertise in dyeing, processing, and manufacturing high-quality fabrics.',
+    'Premium textile dyeing, processing, and manufacturing from Telangana — built for global quality, consistency, and scale.',
   about:
-    'Vaaman Texprint Private Limited is an active, 22-year-old textile manufacturing company based in Telangana, India, specializing in dyeing, processing, and manufacturing wearing apparel. Established in 2004, the company is located in Hayathnagar, Rangareddy district.',
+    'Vaaman Texprint Private Limited specializes in textile processing across cotton, polyester cotton, cotton lycra, viscose, and lyocell fabrics. From preparation to finishing, our workflows are engineered for shade integrity, fastness, and dependable throughput.',
+  background:
+    'The company began with cotton–polyester processing and expanded systematically into multiple fabric categories — aligning processes, machinery, and quality systems with international expectations.',
+  vision:
+    'To satisfy customers and meet global standards with superior quality and on-time delivery.',
   counters: [
-    { label: 'Years Experience', value: '22+' },
-    { label: 'Authorized Capital', value: '₹4 Cr' },
-    { label: 'Infrastructure', value: 'Industrial' },
-  ],
-  services: [
-    {
-      title: 'Dyeing & Processing',
-      description:
-        'Advanced dyeing techniques engineered for consistent shade, fastness, and repeatability.',
-    },
-    {
-      title: 'Textile Manufacturing',
-      description:
-        'Reliable fabric manufacturing workflows built around quality controls and scale.',
-    },
-    {
-      title: 'Polycot Fabric Processing',
-      description:
-        'Specialized processing for polycot blends with balanced hand-feel and durability.',
-    },
-    {
-      title: 'Industrial Finishing',
-      description:
-        'Finishing processes designed to enhance texture, stability, and performance.',
-    },
-  ],
-  infrastructure: [
-    {
-      title: 'Processing Floor',
-      description: 'Clean, organized production zones built for throughput and safety.',
-    },
-    {
-      title: 'Quality Lab',
-      description: 'Measured checks for consistency, shade matching, and defect prevention.',
-    },
-    {
-      title: 'Finishing & Packing',
-      description: 'Standardized finishing and packing for dependable dispatch readiness.',
-    },
+    { label: 'Years of craft', numeric: 18, suffix: '+', duration: 1.6 },
+    { label: 'Fabric categories', numeric: 6, suffix: '', duration: 1.4 },
+    { label: 'Quality systems', numeric: 100, suffix: '%', duration: 1.8 },
+    { label: 'Key machinery lines', numeric: 11, suffix: '+', duration: 1.5 },
   ],
   contact: {
-    address:
-      'Factory # 3-96, Sy. No. 171/A, Chinnaravirala (V), Hayathnagar (M), Rangareddy, Telangana - 501505',
-    email: 'vaamantexprint@gmail.com',
-    phone: '',
+    lines: [
+      'Vaaman Texprint Private Limited',
+      '3-96, Sy No. 171/A,',
+      'Chinnaravirala,',
+      'Hayathnagar,',
+      'Rangareddy,',
+      'Telangana – 501505',
+    ],
+    addressDisplay:
+      'Vaaman Texprint Private Limited, 3-96, Sy No. 171/A, Chinnaravirala, Hayathnagar, Rangareddy, Telangana – 501505',
+    phone: '9383847947',
+    email: 'sales@vaaman.co',
+    contactPerson: 'Marketing — Suresh Nouniya',
   },
 };
+
+export const whyChooseUs = [
+  {
+    title: 'Modern infrastructure',
+    description: 'Purpose-built production zones designed for flow, safety, and repeatable quality.',
+  },
+  {
+    title: 'Advanced machinery',
+    description: 'Industrial lines for singeing, mercerizing, padding, stenters, printing, and finishing.',
+  },
+  {
+    title: 'Quality assurance',
+    description: 'Measured controls across shade, hand-feel, dimensional stability, and defect prevention.',
+  },
+  {
+    title: 'On-time delivery',
+    description: 'Planning and execution aligned to dispatch commitments — without compromising standards.',
+  },
+  {
+    title: 'Global-standard processing',
+    description: 'Processes tuned for consistency, fastness, and performance demanded by export programs.',
+  },
+  {
+    title: 'Experienced team',
+    description: 'Operators and technical leadership with deep textile manufacturing expertise.',
+  },
+];
+
+export const homeServicePreviews = [
+  {
+    title: 'Cotton processing',
+    description: 'Preparation through finishing tuned for natural fibre behaviour and shade depth.',
+  },
+  {
+    title: 'Polyester cotton',
+    description: 'Balanced treatments for blend stability, durability, and commercial hand-feel.',
+  },
+  {
+    title: 'Viscose & lyocell',
+    description: 'Careful handling for regenerated fibres — controlled tension, moisture, and heat profiles.',
+  },
+  {
+    title: 'Cotton lycra',
+    description: 'Stretch-aware processing to protect recovery, surface, and colour uniformity.',
+  },
+  {
+    title: 'Dyeing & finishing',
+    description: 'Repeatable colour pipelines with robust finishing for end-use performance.',
+  },
+  {
+    title: 'Textile printing',
+    description: 'Rotary workflows for sharp definition and dependable production cadence.',
+  },
+  {
+    title: 'Industrial fabrics',
+    description: 'Processing pathways aligned to technical specifications and downstream performance.',
+  },
+  {
+    title: 'Project partnership',
+    description: 'Collaborative trials, approvals, and scale-up with transparent communication.',
+  },
+];
+
+export const servicesDetailed = [
+  {
+    id: 'dyeing',
+    title: 'Dyeing',
+    summary: 'Controlled colour science for repeatable shades and robust fastness.',
+    body: 'Our dyeing approach emphasizes recipe discipline, liquor circulation, and machine parameters matched to fibre class — delivering predictable outcomes across lots.',
+    features: ['Recipe-controlled pipelines', 'Fibre-specific curves', 'Shade consistency focus'],
+  },
+  {
+    id: 'textile-processing',
+    title: 'Textile processing',
+    summary: 'End-to-end preparation and treatment sequences for woven and knit constructions.',
+    body: 'From desizing and scouring through specialized treatments, processing is sequenced to protect fibre integrity while preparing fabrics for dyeing, printing, or finishing.',
+    features: ['Sequenced treatments', 'Throughput planning', 'Defect prevention mindset'],
+  },
+  {
+    id: 'cotton',
+    title: 'Cotton processing',
+    summary: 'Natural-fibre expertise with emphasis on handle, lustre, and dimensional behaviour.',
+    body: 'Cotton programmes balance cleaning, bleaching, and dye uptake — tuned for the commercial outcomes export and domestic programs require.',
+    features: ['Natural fibre expertise', 'Handle & lustre control', 'Lot traceability'],
+  },
+  {
+    id: 'polyester-cotton',
+    title: 'Polyester cotton',
+    summary: 'Blend-aware parameters for even dye distribution and stable mechanical properties.',
+    body: 'Polycot workflows account for differential dye affinity and thermal sensitivity — optimizing fixation, reduction clearing, and finishing for durable wear performance.',
+    features: ['Blend-aware recipes', 'Thermal discipline', 'Durability-oriented finishing'],
+  },
+  {
+    id: 'viscose',
+    title: 'Viscose',
+    summary: 'Low-tension, moisture-aware handling for regenerated cellulosics.',
+    body: 'Viscose processing emphasizes gentle mechanical action and controlled chemistry to protect surface quality and dimensional stability across wet processing stages.',
+    features: ['Gentle mechanical profiles', 'Moisture control', 'Surface quality focus'],
+  },
+  {
+    id: 'lyocell',
+    title: 'Lyocell',
+    summary: 'Precision processing for premium hand-feel and colour clarity.',
+    body: 'Lyocell programmes prioritize fibrillation control and finishing selection — enabling clean surfaces and elevated aesthetic outcomes for premium programs.',
+    features: ['Fibrillation awareness', 'Premium finishing paths', 'Aesthetic clarity'],
+  },
+  {
+    id: 'cotton-lycra',
+    title: 'Cotton lycra',
+    summary: 'Stretch constructions processed with recovery and seam stability in mind.',
+    body: 'Elastane-inclusive fabrics are run with tension discipline and heat management to protect elasticity while achieving uniform colour and stable dimensions.',
+    features: ['Tension discipline', 'Recovery protection', 'Uniform colour fields'],
+  },
+  {
+    id: 'printing',
+    title: 'Textile printing',
+    summary: 'Rotary printing for bold graphics and fine repeats at production scale.',
+    body: 'Printing operations are supported by robust preparation and finishing so colours stay crisp and performance remains dependable through downstream handling.',
+    features: ['Rotary production mindset', 'Repeat precision', 'Finishing integration'],
+  },
+  {
+    id: 'finishing',
+    title: 'Finishing',
+    summary: 'Final mechanical and chemical treatments that define hand-feel and performance.',
+    body: 'Finishing is treated as the capstone of processing — stabilizing dimensions, refining touch, and aligning fabric performance to the end customer’s specification.',
+    features: ['Dimensional stability', 'Performance alignment', 'Premium touch control'],
+  },
+];
+
+export const machinery = [
+  { name: 'Osthoff Senge Singeing Machine', note: 'Surface fibre control for clean dye uptake' },
+  { name: 'Dhall CBR Machine', note: 'Continuous bleaching range preparation' },
+  { name: 'Menzel Mercerizer', note: 'Mercerizing for lustre, strength, and dye affinity' },
+  { name: 'Menzel Maxi Squeezer', note: 'Controlled expression for even wet pickup' },
+  { name: 'Kuster Padding Machines', note: 'Precision padding for consistent chemical application' },
+  { name: '4 Bowl and 5 Bowl Calendars', note: 'Calendering for finish, gloss, and fabric stability' },
+  { name: 'Monforts Stenter', note: 'Heat-setting and finishing with width control' },
+  { name: 'Hi-Tech Stenter', note: 'Advanced stentering for critical dimensional programs' },
+  { name: 'Stork Rotary Printing Machine', note: 'High-definition rotary printing at scale' },
+  { name: 'Dhall Soaper', note: 'Washing sequences for fastness and cleanliness' },
+  { name: 'Dhall Zero-Zero Machines', note: 'Specialized finishing and treatment support' },
+];
+
+export const timeline = [
+  { year: 'Foundations', title: 'Processing roots', detail: 'Started with cotton–polyester processing and disciplined production systems.' },
+  { year: 'Expansion', title: 'Multi-fibre capability', detail: 'Extended into viscose, lyocell, cotton lycra, and broader finishing portfolios.' },
+  { year: 'Today', title: 'Industrial scale', detail: 'Integrated machinery lines with export-oriented quality and delivery rigor.' },
+];
+
+export const infrastructureHighlights = [
+  'Singeeing, mercerizing, and continuous ranges for preparation',
+  'Padding, calendering, and stentering for finishing control',
+  'Rotary printing integrated with washing and finishing',
+  'Production planning aligned to dispatch commitments',
+];
