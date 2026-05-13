@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { WaveLogoMark } from './LogoMark';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -10,17 +11,6 @@ const navItems = [
   { name: 'Infrastructure', path: '/infrastructure' },
   { name: 'Contact', path: '/contact' },
 ];
-
-function LogoIcon({ className }) {
-  return (
-    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden>
-      <path d="M4 32c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
-      <path d="M4 24c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
-      <path d="M4 16c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
-      <path d="M4 8c6-4 12-2 16 2s10 6 16 2" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 function NavItem({ to, children, overlay }) {
   return (
@@ -82,29 +72,48 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ease-luxury ${shell}`}
     >
-      <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="group flex items-center gap-3 outline-none">
+      <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link
+          to="/"
+          className="group/logo flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 outline-none sm:max-w-[26rem] sm:gap-3.5"
+        >
           <motion.div
-            whileHover={reduce ? {} : { rotate: [0, -2, 2, 0] }}
-            transition={{ duration: 0.6 }}
-            className={`flex h-11 w-11 items-center justify-center rounded-2xl border transition-colors duration-300 ${
+            className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-[0.65rem] border sm:h-11 sm:w-11 sm:rounded-2xl ${
               overlayMode
-                ? 'border-white/15 bg-white/5 text-gold'
+                ? 'border-white/18 bg-white/[0.07] text-gold shadow-[0_0_0_1px_rgba(255,255,255,0.06)]'
                 : 'border-line bg-surface text-gold shadow-card'
             }`}
+            whileHover={
+              reduce
+                ? {}
+                : {
+                    scale: 1.05,
+                    boxShadow: overlayMode
+                      ? '0 12px 36px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,161,74,0.35)'
+                      : '0 14px 40px rgba(11,31,58,0.12), 0 0 0 1px rgba(201,161,74,0.22)',
+                  }
+            }
+            whileTap={reduce ? {} : { scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 26 }}
           >
-            <LogoIcon className="h-7 w-7" />
+            <motion.div
+              className="flex h-full w-full items-center justify-center p-[0.55rem] sm:p-2"
+              whileHover={reduce ? {} : { rotate: [0, -3, 3, 0] }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <WaveLogoMark className="h-[1.45rem] w-[1.45rem] sm:h-7 sm:w-7" strokeWidth={2.15} />
+            </motion.div>
           </motion.div>
-          <div className="flex flex-col leading-none">
+          <div className="min-w-0 flex flex-col justify-center leading-[1.05]">
             <span
-              className={`font-serif text-lg font-semibold tracking-tight transition-colors md:text-xl ${
+              className={`truncate font-serif text-[1.05rem] font-semibold tracking-[-0.02em] transition-colors sm:text-lg md:text-xl ${
                 overlayMode ? 'text-snow' : 'text-ink'
               }`}
             >
               Vaaman Texprint
             </span>
             <span
-              className={`mt-1 text-[9px] font-medium uppercase tracking-[0.22em] transition-colors md:text-[10px] ${
+              className={`mt-[0.2rem] truncate text-[9px] font-medium uppercase tracking-[0.2em] transition-colors sm:text-[10px] sm:tracking-[0.22em] ${
                 overlayMode ? 'text-snow/55' : 'text-slate'
               }`}
             >
@@ -113,7 +122,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden shrink-0 items-center gap-7 md:flex lg:gap-8">
           {navItems.map((item) => (
             <NavItem key={item.path} to={item.path} overlay={overlayMode}>
               {item.name}
@@ -123,7 +132,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`rounded-xl p-2.5 md:hidden ${overlayMode ? 'text-snow' : 'text-ink'}`}
+          className={`shrink-0 rounded-xl p-2.5 md:hidden ${overlayMode ? 'text-snow' : 'text-ink'}`}
           aria-expanded={open}
           aria-label="Toggle navigation"
           onClick={() => setOpen((v) => !v)}
