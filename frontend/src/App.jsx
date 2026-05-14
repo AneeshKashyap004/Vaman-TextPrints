@@ -91,9 +91,15 @@ function AnimatedRoutes() {
   );
 }
 
+function routerBasename() {
+  const base = import.meta.env.BASE_URL;
+  if (!base || base === '/') return undefined;
+  return base.replace(/\/$/, '') || undefined;
+}
+
 function App() {
   return (
-    <Router>
+    <Router basename={routerBasename()}>
       <AnimatedRoutes />
     </Router>
   );

@@ -1,12 +1,11 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import {
   motion,
   useScroll,
   useTransform,
   useReducedMotion,
 } from 'framer-motion';
-import { ChevronDown, ArrowUpRight, Factory } from 'lucide-react';
+import { ChevronDown, ArrowUpRight } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import Reveal from '../components/Reveal';
 import AnimatedCounter from '../components/AnimatedCounter';
