@@ -154,23 +154,7 @@ export default function Home() {
           />
           <Reveal>
             <ImageFrame src={images.textileDetail} alt="Textile manufacturing detail" />
-            <div className="mt-6 flex items-center justify-between gap-4 rounded-2xl border border-line bg-white/80 px-5 py-4 backdrop-blur-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15 text-gold">
-                  <Factory className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-ink">Facility narrative</p>
-                  <p className="text-xs text-slate">Hayathnagar · Telangana</p>
-                </div>
-              </div>
-              <Link
-                to="/about"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-gold transition hover:opacity-80"
-              >
-                Our story
-              </Link>
-            </div>
+            
           </Reveal>
         </div>
       </section>
