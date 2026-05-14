@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Vaaman Texprint">
+  <rect width="40" height="40" rx="10" fill="#0B1F3A"/>
+  <g fill="none" stroke="#C9A14A" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 32c6-4 12-2 16 2s10 6 16 2"/>
+    <path d="M4 24c6-4 12-2 16 2s10 6 16 2"/>
+    <path d="M4 16c6-4 12-2 16 2s10 6 16 2"/>
+    <path d="M4 8c6-4 12-2 16 2s10 6 16 2"/>
+  </g>
+</svg>
