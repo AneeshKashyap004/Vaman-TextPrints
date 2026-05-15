@@ -12,13 +12,7 @@ import AnimatedCounter from '../components/AnimatedCounter';
 import PremiumButton from '../components/PremiumButton';
 import ImageFrame from '../components/ImageFrame';
 import SectionHeading from '../components/SectionHeading';
-import {
-  company,
-  images,
-  homeServicePreviews,
-  whyChooseUs,
-  machinery,
-} from '../data/siteContent';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const wordContainer = {
   hidden: {},
@@ -36,7 +30,7 @@ const wordItem = {
   },
 };
 
-function Hero() {
+function Hero({ company, images }) {
   const ref = useRef(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -94,7 +88,7 @@ function Hero() {
           transition={{ delay: 0.58, duration: 0.55 }}
           className="mt-10 flex flex-wrap gap-4"
         >
-          <PremiumButton to="/services" variant="gold">
+          <PremiumButton to="/products" variant="gold">
             Explore capabilities
             <ArrowUpRight className="h-4 w-4" />
           </PremiumButton>
@@ -120,11 +114,17 @@ function Hero() {
 }
 
 export default function Home() {
+  const { content } = useSiteContent();
+  const { company, images, homeServicePreviews, whyChooseUs, machinery } = content;
   const featuredMachines = machinery.slice(0, 3);
+  const ctaHeading = company.ctaHeading || 'Partner with a trusted textile manufacturing expert';
+  const ctaSubtext =
+    company.ctaSubtext ||
+    'Share your fabric class, program volumes, and quality benchmarks — we will respond with a clear path to production.';
 
   return (
     <PageTransition>
-      <Hero />
+      <Hero company={company} images={images} />
 
       <section className="border-y border-line bg-charcoal py-16 text-snow md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:gap-6 lg:px-8">
@@ -189,8 +189,8 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-14 flex justify-center">
-            <PremiumButton to="/services" variant="outline">
-              View services
+            <PremiumButton to="/products" variant="outline">
+              View products
             </PremiumButton>
           </div>
         </div>
@@ -251,12 +251,8 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-navy/40 blur-3xl" />
         <Reveal className="relative mx-auto max-w-3xl text-center">
           <p className="text-xs uppercase tracking-[0.35em] text-gold/90">Partnership</p>
-          <h2 className="mt-4 font-serif text-3xl text-snow md:text-4xl lg:text-[2.6rem]">
-            Partner with a trusted textile manufacturing expert
-          </h2>
-          <p className="mt-6 text-slate">
-            Share your fabric class, program volumes, and quality benchmarks — we will respond with a clear path to production.
-          </p>
+          <h2 className="mt-4 font-serif text-3xl text-snow md:text-4xl lg:text-[2.6rem]">{ctaHeading}</h2>
+          <p className="mt-6 text-slate">{ctaSubtext}</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <PremiumButton to="/contact" variant="gold">
               Get in touch

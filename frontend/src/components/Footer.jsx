@@ -5,7 +5,7 @@ import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
 const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
+  { name: 'Products', path: '/products' },
   { name: 'Infrastructure', path: '/infrastructure' },
   { name: 'Contact', path: '/contact' },
 ];

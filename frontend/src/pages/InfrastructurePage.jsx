@@ -1,39 +1,163 @@
 import { motion } from 'framer-motion';
-import { Cpu, ArrowUpRight } from 'lucide-react';
+import { Cpu, ArrowUpRight, Shield, Gauge, Users, Award } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import InnerHero from '../components/InnerHero';
 import Reveal from '../components/Reveal';
-import SectionHeading from '../components/SectionHeading';
 import ImageFrame from '../components/ImageFrame';
 import PremiumButton from '../components/PremiumButton';
-import { images, machinery, infrastructureHighlights } from '../data/siteContent';
+import AnimatedCounter from '../components/AnimatedCounter';
+import { useSiteContent } from '../hooks/useSiteContent';
 
-const gallery = [images.heroInfrastructure, images.factoryFloor, images.textileDetail];
+const statIcons = [Gauge, Shield, Users, Award];
 
 export default function InfrastructurePage() {
+  const { content } = useSiteContent();
+  const {
+    images,
+    machinery,
+    infrastructureHighlights,
+    infrastructureCapability,
+    company,
+    pages,
+  } = content;
+  const infraMeta = pages?.infrastructure || {};
+
+  const capabilityBody =
+    infrastructureCapability?.body ||
+    'Each line is operated within documented parameters — so approvals translate into repeatable bulk performance with skilled workers, experienced staff, dedicated officers, and full support of management.';
+
+  const gallery = [
+    images.heroInfrastructure,
+    images.factoryFloor,
+    images.textileDetail,
+  ];
+
   return (
     <PageTransition>
       <InnerHero
-        image={images.heroInfrastructure}
-        eyebrow="Infrastructure"
-        title="For best quality and quantity production."/>
+        image={images.infrastructureCapability || images.heroInfrastructure}
+        eyebrow={infraMeta.eyebrow || 'Infrastructure'}
+        title={infraMeta.title || infrastructureCapability?.title || 'For best quality and quantity production'}
+        subtitle={infraMeta.subtitle || capabilityBody}
+      />
 
       <section className="border-b border-line bg-white py-section px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          
-            <div className="rounded-3xl border border-line bg-surface p-8 shadow-card lg:col-span-5">
-              <Cpu className="h-8 w-8 text-gold" />
-              <p className="mt-4 text-sm leading-relaxed text-slate">
-                Each line is operated within documented parameters — so approvals translate into repeatable bulk performance possible with: <br></br>Skilled workers <br></br>  Experinced Staff<br></br>Dedicated Officers<br></br>Full support of Management
-              </p>
+          <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
+            <Reveal className="lg:col-span-5">
+              <div className="flex h-full flex-col rounded-3xl border border-line bg-surface p-8 shadow-card lg:p-10">
+                <Cpu className="h-9 w-9 text-gold" />
+                <h2 className="mt-6 font-serif text-2xl text-ink md:text-3xl">
+                  Operational discipline
+                </h2>
+                <p className="mt-5 flex-1 text-sm leading-relaxed text-slate md:text-base">
+                  {capabilityBody}
+                </p>
+                <ul className="mt-8 space-y-3 border-t border-line pt-8 text-sm text-ink/90">
+                  {['Skilled workers', 'Experienced staff', 'Dedicated officers', 'Management support'].map(
+                    (item) => (
+                      <li key={item} className="flex items-center gap-3">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                        {item}
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
+            </Reveal>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
+              <Reveal className="sm:col-span-2">
+                <ImageFrame
+                  src={images.infrastructureCapability || images.heroInfrastructure}
+                  alt="Manufacturing capability"
+                  aspect="aspect-[21/10]"
+                  rounded="rounded-3xl"
+                />
+              </Reveal>
+              {(company.counters || []).slice(0, 4).map((stat, i) => {
+                const Icon = statIcons[i] || Gauge;
+                return (
+                  <Reveal key={stat.label} delay={i * 0.06}>
+                    <motion.div
+                      whileHover={{ y: -6, boxShadow: '0 28px 70px rgba(11,31,58,0.14)' }}
+                      className="glass-panel flex h-full flex-col rounded-2xl p-6 transition-shadow duration-500"
+                    >
+                      <Icon className="h-6 w-6 text-gold" />
+                      <p className="mt-4 font-serif text-3xl text-ink">
+                        <AnimatedCounter
+                          numeric={stat.numeric}
+                          suffix={stat.suffix}
+                          duration={stat.duration}
+                        />
+                      </p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-slate">
+                        {stat.label}
+                      </p>
+                    </motion.div>
+                  </Reveal>
+                );
+              })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line bg-surface py-section px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Reveal className="mb-12 text-center md:mb-16">
+            <p className="text-xs uppercase tracking-[0.32em] text-gold">Quality Assurance</p>
+            <h2 className="mt-4 font-serif text-3xl text-ink md:text-4xl">
+              Global-grade checks built into every run
+            </h2>
+          </Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Lab validation',
+                desc: 'Measured checks for shade integrity, hand-feel, and performance alignment.',
+                Icon: Shield,
+              },
+              {
+                title: 'Shade matching',
+                desc: 'Repeatable colour discipline with documented references per lot.',
+                Icon: Gauge,
+              },
+              {
+                title: 'Defect prevention',
+                desc: 'Proactive controls to minimize unevenness, contamination, and risk factors.',
+                Icon: Award,
+              },
+              {
+                title: 'Export dispatch',
+                desc: 'Packaging and readiness engineered for reliable downstream handling.',
+                Icon: Users,
+              },
+            ].map(({ title, desc, Icon }, idx) => (
+              <Reveal key={title} delay={idx * 0.06}>
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass-panel rounded-2xl p-7 border border-line bg-white/60 shadow-card"
+                >
+                  <Icon className="h-7 w-7 text-gold" />
+                  <h3 className="mt-5 font-serif text-xl text-ink">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate">{desc}</p>
+                </motion.div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="py-section px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
+          <Reveal className="mb-12 text-center md:mb-16">
+            <p className="text-xs uppercase tracking-[0.32em] text-gold">Machinery</p>
+            <h2 className="mt-4 font-serif text-3xl text-ink md:text-4xl">
+              Industrial lines — precision at scale
+            </h2>
+          </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {machinery.map((m, i) => {
               const visual = gallery[i % gallery.length];
@@ -44,44 +168,45 @@ export default function InfrastructurePage() {
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-shadow duration-500 hover:border-gold/30 hover:shadow-lift"
                   >
-                    <div className="relative aspect-[16/11] overflow-hidden">
+                    <motion.div className="relative aspect-[16/11] overflow-hidden">
                       <img
                         src={visual}
                         alt=""
                         className="h-full w-full object-cover transition duration-[900ms] ease-luxury group-hover:scale-[1.06]"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent opacity-90" />
-                      <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-sm font-serif text-gold backdrop-blur-md">
+                      <motion.div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent opacity-90" />
+                      <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/10 font-serif text-sm text-gold backdrop-blur-md">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                    </div>
+                    </motion.div>
                     <div className="flex flex-1 flex-col p-8">
                       <h3 className="font-serif text-xl text-ink md:text-2xl">{m.name}</h3>
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{m.note}</p>
                       <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold opacity-80 transition group-hover:opacity-100">
                         Line detail
-                        <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <ArrowUpRight className="h-3.5 w-3.5" />
                       </span>
                     </div>
-                    <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-gold/0 transition group-hover:ring-gold/15" />
                   </motion.article>
                 </Reveal>
               );
-            })}
-          </div>
+            })}          </div>
         </div>
       </section>
 
       <section className="border-t border-line bg-navy py-section text-snow px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
+        <motion.div
+          className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
           <Reveal>
             <p className="text-xs uppercase tracking-[0.3em] text-gold/90">Gallery</p>
-            <h3 className="mt-4 font-serif text-3xl md:text-4xl">Production environments — controlled, luminous, precise</h3>
-            <p className="mt-5 text-slate">
-              Imagery shown uses premium industrial placeholders. Replace with on-site photography when ready — filenames are centralized in{' '}
-              <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs">src/data/siteContent.js</code>.
-            </p>
+            <h3 className="mt-4 font-serif text-3xl md:text-4xl">
+              Production environments — controlled, luminous, precise
+            </h3>
             <ul className="mt-8 space-y-3 text-sm text-slate">
               {infrastructureHighlights.map((h) => (
                 <li key={h} className="flex gap-3">
@@ -93,18 +218,20 @@ export default function InfrastructurePage() {
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
             {gallery.map((src, idx) => (
-              <Reveal key={src} delay={idx * 0.06}>
+              <Reveal key={`${src}-${idx}`} delay={idx * 0.06}>
                 <ImageFrame src={src} alt="" aspect="aspect-square" rounded="rounded-2xl" />
               </Reveal>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-section px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto flex max-w-4xl flex-col items-center rounded-3xl border border-line bg-gradient-to-br from-white to-surface px-8 py-14 text-center shadow-soft">
           <h3 className="font-serif text-3xl text-ink">Book a technical walkthrough</h3>
-          <p className="mt-4 text-slate">See ranges, discuss SOPs, and validate quality checkpoints with our team.</p>
+          <p className="mt-4 text-slate">
+            See ranges, discuss SOPs, and validate quality checkpoints with our team.
+          </p>
           <PremiumButton to="/contact" variant="gold" className="mt-8">
             Contact operations
           </PremiumButton>

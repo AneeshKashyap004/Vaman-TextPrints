@@ -6,21 +6,20 @@ import SectionHeading from '../components/SectionHeading';
 import ImageFrame from '../components/ImageFrame';
 import PremiumButton from '../components/PremiumButton';
 import AnimatedCounter from '../components/AnimatedCounter';
-import {
-  company,
-  images,
-  timeline,
-  infrastructureHighlights,
-} from '../data/siteContent';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 export default function AboutPage() {
+  const { content } = useSiteContent();
+  const { company, images, timeline, infrastructureHighlights, pages } = content;
+  const aboutMeta = pages?.about || {};
+
   return (
     <PageTransition>
       <InnerHero
         image={images.heroAbout}
-        eyebrow="About Vaaman Texprint"
-        title="Heritage of processing. Built for global benchmarks."
-        subtitle={company.about}
+        eyebrow={aboutMeta.eyebrow || 'About Vaaman Texprint'}
+        title={aboutMeta.title || 'Heritage of processing. Built for global benchmarks.'}
+        subtitle={aboutMeta.subtitle || company.about}
       />
 
       <section className="py-section px-4 sm:px-6 lg:px-8">

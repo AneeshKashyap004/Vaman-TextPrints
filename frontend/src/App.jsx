@@ -1,15 +1,17 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SiteContentProvider } from './context/SiteContentContext';
 import SiteLayout from './layouts/SiteLayout';
 
 const Home = lazy(() => import('./pages/Home'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 const InfrastructurePage = lazy(() => import('./pages/InfrastructurePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 
-/** BrowserRouter is not a "data router" — ScrollRestoration is unsupported; scroll on navigation instead. */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -22,22 +24,15 @@ function PageLoader() {
   return (
     <div className="flex min-h-[70vh] items-center justify-center bg-charcoal">
       <motion.div
-        className="flex flex-col items-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        <motion.div
-          className="h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent"
-          animate={{ opacity: [0.35, 1, 0.35] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <p className="text-xs font-medium uppercase tracking-[0.45em] text-gold/90">Vaaman Texprint</p>
-      </motion.div>
+        className="h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent"
+        animate={{ opacity: [0.35, 1, 0.35] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+      />
     </div>
   );
 }
 
-function AnimatedRoutes() {
+function AppRoutes() {
   const location = useLocation();
 
   return (
@@ -45,6 +40,10 @@ function AnimatedRoutes() {
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes location={location} key={location.pathname}>
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
+
           <Route
             path="/"
             element={
@@ -62,13 +61,14 @@ function AnimatedRoutes() {
             }
           />
           <Route
-            path="/services"
+            path="/products"
             element={
               <SiteLayout>
-                <ServicesPage />
+                <ProductsPage />
               </SiteLayout>
             }
           />
+          <Route path="/services" element={<Navigate to="/products" replace />} />
           <Route
             path="/infrastructure"
             element={
@@ -99,9 +99,11 @@ function routerBasename() {
 
 function App() {
   return (
-    <Router basename={routerBasename()}>
-      <AnimatedRoutes />
-    </Router>
+    <SiteContentProvider>
+      <Router basename={routerBasename()}>
+        <AppRoutes />
+      </Router>
+    </SiteContentProvider>
   );
 }
 

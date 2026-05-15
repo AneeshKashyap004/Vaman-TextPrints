@@ -7,7 +7,7 @@ import { WaveLogoMark } from './LogoMark';
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
+  { name: 'Products', path: '/products' },
   { name: 'Infrastructure', path: '/infrastructure' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -31,7 +31,7 @@ function NavItem({ to, children, overlay }) {
             {children}
           </span>
           <span
-            className={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-px origin-left scale-x-0 transform bg-gold transition-transform duration-300 ease-luxury group-hover:scale-x-100 ${
+            className={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-px origin-left scale-x-0 bg-gold transition-transform duration-300 ease-luxury group-hover:scale-x-100 ${
               isActive ? 'scale-x-100' : ''
             }`}
           />
@@ -63,7 +63,7 @@ export default function Navbar() {
 
   const shell = overlayMode
     ? 'border-transparent bg-transparent text-snow shadow-none'
-    : 'border-line/80 bg-surface/90 text-ink shadow-soft backdrop-blur-xl';
+    : 'border-line/80 bg-surface/92 text-ink shadow-soft backdrop-blur-xl';
 
   return (
     <motion.header
@@ -72,63 +72,61 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ease-luxury ${shell}`}
     >
-      <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-[5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:h-[5.25rem] sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="group/logo flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 outline-none sm:max-w-[26rem] sm:gap-3.5"
+          className="group/logo flex min-w-0 shrink-0 items-center gap-3 outline-none sm:gap-4"
         >
           <motion.div
-            className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-[0.65rem] border sm:h-11 sm:w-11 sm:rounded-2xl ${
+            className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border sm:h-[3.25rem] sm:w-[3.25rem] ${
               overlayMode
-                ? 'border-white/18 bg-white/[0.07] text-gold shadow-[0_0_0_1px_rgba(255,255,255,0.06)]'
+                ? 'border-white/20 bg-white/[0.08] text-gold shadow-[0_0_0_1px_rgba(255,255,255,0.08)]'
                 : 'border-line bg-surface text-gold shadow-card'
             }`}
             whileHover={
               reduce
                 ? {}
                 : {
-                    scale: 1.05,
+                    scale: 1.06,
                     boxShadow: overlayMode
-                      ? '0 12px 36px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,161,74,0.35)'
-                      : '0 14px 40px rgba(11,31,58,0.12), 0 0 0 1px rgba(201,161,74,0.22)',
+                      ? '0 14px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,161,74,0.4)'
+                      : '0 16px 44px rgba(11,31,58,0.14), 0 0 0 1px rgba(201,161,74,0.28)',
                   }
             }
             whileTap={reduce ? {} : { scale: 0.97 }}
-            transition={{ type: 'spring', stiffness: 420, damping: 26 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 24 }}
           >
-            <motion.div
-              className="flex h-full w-full items-center justify-center p-[0.55rem] sm:p-2"
-              whileHover={reduce ? {} : { rotate: [0, -3, 3, 0] }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <WaveLogoMark className="h-[1.45rem] w-[1.45rem] sm:h-7 sm:w-7" strokeWidth={2.15} />
-            </motion.div>
+            <WaveLogoMark className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} />
           </motion.div>
-          <div className="min-w-0 flex flex-col justify-center leading-[1.05]">
+          <motion.div
+            className="flex min-w-0 flex-col justify-center"
+            whileHover={reduce ? {} : { x: 2 }}
+            transition={{ duration: 0.3 }}
+          >
             <span
-              className={`truncate font-serif text-[1.05rem] font-semibold tracking-[-0.02em] transition-colors sm:text-lg md:text-xl ${
+              className={`truncate font-serif text-[1.35rem] font-bold leading-none tracking-[-0.03em] transition-colors sm:text-[1.55rem] md:text-[1.75rem] lg:text-[1.9rem] ${
                 overlayMode ? 'text-snow' : 'text-ink'
               }`}
             >
               Vaaman Texprint
             </span>
             <span
-              className={`mt-[0.2rem] truncate text-[9px] font-medium uppercase tracking-[0.2em] transition-colors sm:text-[10px] sm:tracking-[0.22em] ${
-                overlayMode ? 'text-snow/55' : 'text-slate'
+              className={`mt-1.5 truncate text-[9px] font-semibold uppercase tracking-[0.28em] transition-colors sm:text-[10px] sm:tracking-[0.32em] ${
+                overlayMode ? 'text-snow/50' : 'text-slate'
               }`}
             >
               Private Limited
             </span>
-          </div>
+          </motion.div>
         </Link>
 
-        <div className="hidden shrink-0 items-center gap-7 md:flex lg:gap-8">
+        <motion.div className="hidden shrink-0 items-center gap-7 md:flex lg:gap-9">
           {navItems.map((item) => (
             <NavItem key={item.path} to={item.path} overlay={overlayMode}>
               {item.name}
             </NavItem>
           ))}
-        </div>
+        </motion.div>
 
         <button
           type="button"
@@ -137,7 +135,7 @@ export default function Navbar() {
           aria-label="Toggle navigation"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 

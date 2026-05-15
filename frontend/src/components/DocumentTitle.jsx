@@ -7,7 +7,7 @@ const HOME_TITLE = import.meta.env.VITE_HOME_TITLE?.trim() || COMPANY;
 
 const SECTION = {
   '/about': 'About',
-  '/services': 'Services',
+  '/products': 'Products',
   '/infrastructure': 'Infrastructure',
   '/contact': 'Contact',
 };

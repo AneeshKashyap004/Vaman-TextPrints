@@ -13,6 +13,10 @@ export const images = {
     'https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=2400&q=80',
   heroServices:
     'https://images.unsplash.com/photo-1465120232534-6129eec94400?auto=format&fit=crop&w=2400&q=80',
+  heroProducts:
+    'https://images.unsplash.com/photo-1465120232534-6129eec94400?auto=format&fit=crop&w=2400&q=80',
+  infrastructureCapability:
+    'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80',
   heroInfrastructure:
     'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=80',
   heroContact:
