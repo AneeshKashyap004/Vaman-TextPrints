@@ -18,6 +18,7 @@ import SectionHeading from '../components/SectionHeading';
 import ImageFrame from '../components/ImageFrame';
 import PremiumButton from '../components/PremiumButton';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { pickPrimaryImage, pickThumb, resolveMediaUrl } from '../lib/media';
 
 const iconById = {
   dyeing: Droplets,
@@ -75,8 +76,10 @@ export default function ProductsPage() {
           >
             {products.map((svc, index) => {
               const Icon = iconById[svc.id] || Sparkles;
-              const img = visuals[index % visuals.length];
+              const fallback = visuals[index % visuals.length];
+              const img = pickPrimaryImage(svc, fallback);
               const reverse = index % 2 === 1;
+              const displayNum = svc.number != null ? svc.number : index + 1;
               return (
                 <motion.div
                   key={svc.id}
@@ -91,7 +94,17 @@ export default function ProductsPage() {
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       className={`relative ${reverse ? 'lg:order-2' : ''}`}
                     >
-                      <ImageFrame src={img} alt={svc.title} aspect="aspect-[5/4]" />
+                      <ImageFrame
+                        src={pickThumb(svc) || img}
+                        srcSet={
+                          svc.images?.length
+                            ? `${resolveMediaUrl(svc.image || svc.images[0]?.url)} 1200w, ${pickThumb(svc)} 480w`
+                            : undefined
+                        }
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        alt={svc.title}
+                        aspect="aspect-[5/4]"
+                      />
                       <motion.div
                         className="pointer-events-none absolute -bottom-6 -right-4 hidden rounded-2xl border border-line bg-white/90 px-5 py-4 text-ink shadow-lift backdrop-blur-md md:block"
                         whileHover={{ scale: 1.02 }}
@@ -105,14 +118,21 @@ export default function ProductsPage() {
                         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold/12 text-gold">
                           <Icon className="h-5 w-5" strokeWidth={1.5} />
                         </span>
+                        {svc.category && (
+                          <span className="text-[10px] uppercase tracking-[0.2em] text-slate">
+                            {svc.category}
+                          </span>
+                        )}
                         <span className="font-serif text-sm tracking-wide text-ink/80">
-                          {String(index + 1).padStart(2, '0')} —
+                          {String(displayNum).padStart(2, '0')} —
                         </span>
                       </div>
                       <h3 className="mt-8 font-serif text-3xl text-ink md:text-4xl">{svc.title}</h3>
                       <p className="mt-4 text-lg text-slate/95">{svc.summary}</p>
-                      {svc.body && (
-                        <p className="mt-5 text-sm leading-relaxed text-slate">{svc.body}</p>
+                      {(svc.description || svc.body) && (
+                        <p className="mt-5 text-sm leading-relaxed text-slate">
+                          {svc.description || svc.body}
+                        </p>
                       )}
                       <ul className="mt-8 space-y-3">
                         {(svc.features || []).map((f) => (

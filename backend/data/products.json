@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": "dyeing",
+      "number": 1,
+      "title": "Dyeing",
+      "summary": "Controlled colour science for repeatable shades and robust fastness.",
+      "description": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
+      "body": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Recipe-controlled pipelines",
+        "Fibre-specific curves",
+        "Shade consistency focus"
+      ]
+    },
+    {
+      "id": "textile-processing",
+      "number": 2,
+      "title": "Textile Processing",
+      "summary": "End-to-end preparation and treatment sequences for woven.",
+      "description": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
+      "body": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Sequenced treatments",
+        "Throughput planning",
+        "Defect prevention mindset"
+      ]
+    },
+    {
+      "id": "cotton",
+      "number": 3,
+      "title": "Cotton Processing",
+      "summary": "Natural-fibre expertise with emphasis on handle and lustre.",
+      "description": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
+      "body": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Natural fibre expertise",
+        "Handle & lustre control",
+        "Lot traceability"
+      ]
+    },
+    {
+      "id": "polyester-cotton",
+      "number": 4,
+      "title": "Polyester Cotton Processing",
+      "summary": "Blend-aware parameters for even dye distribution.",
+      "description": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
+      "body": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Blend-aware recipes",
+        "Thermal discipline",
+        "Durability-oriented finishing"
+      ]
+    },
+    {
+      "id": "viscose",
+      "number": 5,
+      "title": "Viscose Fabric Processing",
+      "summary": "Low-tension, moisture-aware handling for regenerated cellulosics.",
+      "description": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
+      "body": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Gentle mechanical profiles",
+        "Moisture control",
+        "Surface quality focus"
+      ]
+    },
+    {
+      "id": "lyocell",
+      "number": 6,
+      "title": "Lyocell Processing",
+      "summary": "Precision processing for premium hand-feel and colour clarity.",
+      "description": "Lyocell programmes prioritize fibrillation control and finishing selection.",
+      "body": "Lyocell programmes prioritize fibrillation control and finishing selection.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Fibrillation awareness",
+        "Premium finishing paths",
+        "Aesthetic clarity"
+      ]
+    },
+    {
+      "id": "cotton-lycra",
+      "number": 7,
+      "title": "Cotton Lycra Processing",
+      "summary": "Stretch constructions processed with recovery in mind.",
+      "description": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
+      "body": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Tension discipline",
+        "Recovery protection",
+        "Uniform colour fields"
+      ]
+    },
+    {
+      "id": "printing",
+      "number": 8,
+      "title": "Textile Printing",
+      "summary": "Rotary printing for bold graphics at production scale.",
+      "description": "Printing operations supported by robust preparation and finishing.",
+      "body": "Printing operations supported by robust preparation and finishing.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Rotary production mindset",
+        "Repeat precision",
+        "Finishing integration"
+      ]
+    },
+    {
+      "id": "finishing",
+      "number": 9,
+      "title": "Fabric Finishing",
+      "summary": "Final treatments that define hand-feel and performance.",
+      "description": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
+      "body": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
+      "category": "General",
+      "image": null,
+      "images": [],
+      "features": [
+        "Dimensional stability",
+        "Performance alignment",
+        "Premium touch control"
+      ]
+    }
+  ]
+}

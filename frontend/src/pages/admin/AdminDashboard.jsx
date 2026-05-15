@@ -5,15 +5,16 @@ import {
   Image,
   FileText,
   Package,
+  Cog,
   LogOut,
   Save,
   Upload,
-  Trash2,
-  Plus,
   ExternalLink,
 } from 'lucide-react';
 import { cmsApi, setToken, getToken } from '../../lib/api';
 import { useSiteContent } from '../../hooks/useSiteContent';
+import ManageProductsSection from './sections/ManageProductsSection';
+import ManageMachinerySection from './sections/ManageMachinerySection';
 
 const IMAGE_KEYS = [
   { key: 'heroHome', label: 'Home — Hero banner' },
@@ -27,9 +28,10 @@ const IMAGE_KEYS = [
 ];
 
 const tabs = [
-  { id: 'images', label: 'Images', icon: Image },
+  { id: 'images', label: 'Site images', icon: Image },
+  { id: 'manage-products', label: 'Manage Products', icon: Package },
+  { id: 'manage-machinery', label: 'Manage Machinery', icon: Cog },
   { id: 'content', label: 'Content', icon: FileText },
-  { id: 'products', label: 'Products', icon: Package },
 ];
 
 export default function AdminDashboard() {
@@ -67,8 +69,6 @@ export default function AdminDashboard() {
         company: draft.company,
         whyChooseUs: draft.whyChooseUs,
         homeProductPreviews: draft.homeServicePreviews,
-        products: draft.servicesDetailed,
-        machinery: draft.machinery,
         timeline: draft.timeline,
         infrastructureHighlights: draft.infrastructureHighlights,
         infrastructureCapability: draft.infrastructureCapability,
@@ -101,35 +101,8 @@ export default function AdminDashboard() {
     }
   };
 
-  const addProduct = async () => {
-    try {
-      await cmsApi.addProduct({
-        title: 'New product',
-        summary: '',
-        body: '',
-        features: [],
-      });
-      await refresh();
-      loadDraft();
-      showStatus('Product added');
-    } catch (e) {
-      showStatus(e.message || 'Failed');
-    }
-  };
-
-  const deleteProduct = async (id) => {
-    if (!confirm('Delete this product?')) return;
-    try {
-      await cmsApi.deleteProduct(id);
-      await refresh();
-      loadDraft();
-      showStatus('Product deleted');
-    } catch (e) {
-      showStatus(e.message || 'Failed');
-    }
-  };
-
   const images = draft?.images ?? content.images;
+  const isWideTab = tab === 'manage-products' || tab === 'manage-machinery';
 
   return (
     <motion.div
@@ -153,7 +126,7 @@ export default function AdminDashboard() {
               type="button"
               onClick={() => {
                 setTab(t.id);
-                if (t.id !== 'images' && !draft) loadDraft();
+                if (t.id === 'content' && !draft) loadDraft();
               }}
               whileHover={{ x: 4 }}
               className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm transition ${
@@ -194,7 +167,7 @@ export default function AdminDashboard() {
                 type="button"
                 onClick={() => {
                   setTab(t.id);
-                  if (t.id !== 'images' && !draft) loadDraft();
+                  if (t.id === 'content' && !draft) loadDraft();
                 }}
                 className={`rounded-lg px-3 py-1.5 text-xs uppercase tracking-wider ${
                   tab === t.id ? 'bg-gold/20 text-gold' : 'text-slate'
@@ -218,7 +191,7 @@ export default function AdminDashboard() {
           )}
         </header>
 
-        <div className="mx-auto max-w-5xl p-4 lg:p-8">
+        <div className={`mx-auto p-4 lg:p-8 ${isWideTab ? 'max-w-7xl' : 'max-w-5xl'}`}>
           {tab === 'images' && (
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -881,122 +854,22 @@ export default function AdminDashboard() {
             </motion.div>
           )}
 
-          {tab === 'products' && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <div className="mb-6 flex justify-between">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!draft) loadDraft();
-                  }}
-                  className="text-sm text-slate hover:text-gold"
-                >
-                  {draft ? 'Editing loaded' : 'Load products'}
-                </button>
-                <button
-                  type="button"
-                  onClick={addProduct}
-                  className="flex items-center gap-2 rounded-full bg-gold/15 px-4 py-2 text-sm text-gold"
-                >
-                  <Plus className="h-4 w-4" />
-                  Add product
-                </button>
-              </div>
-              <div className="space-y-4">
-                {(draft?.servicesDetailed ?? content.servicesDetailed).map((p, i) => (
-                  <motion.div
-                    key={p.id}
-                    layout
-                    className="rounded-2xl border border-lineDark bg-navy/50 p-6"
-                  >
-                    <motion.div className="flex justify-between gap-4">
-                      <span className="font-serif text-gold">
-                        {String(i + 1).padStart(2, '0')} —
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => deleteProduct(p.id)}
-                        className="text-slate hover:text-red-400"
-                        aria-label="Delete"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </motion.div>
-                    {draft ? (
-                      <>
-                        <input
-                          value={p.title}
-                          onChange={(e) => {
-                            const next = [...draft.servicesDetailed];
-                            next[i] = { ...next[i], title: e.target.value };
-                            setDraft({ ...draft, servicesDetailed: next });
-                          }}
-                          className="mt-3 w-full rounded-xl border border-lineDark bg-charcoal/50 px-4 py-2 font-serif text-lg text-snow"
-                        />
-                        <textarea
-                          rows={2}
-                          value={p.summary}
-                          onChange={(e) => {
-                            const next = [...draft.servicesDetailed];
-                            next[i] = { ...next[i], summary: e.target.value };
-                            setDraft({ ...draft, servicesDetailed: next });
-                          }}
-                          className="mt-3 w-full rounded-xl border border-lineDark bg-charcoal/50 px-4 py-2 text-sm text-slate"
-                        />
-
-                        <label className="mt-4 block text-xs uppercase tracking-wider text-slate">
-                          Body
-                        </label>
-                        <textarea
-                          rows={3}
-                          value={p.body || ''}
-                          onChange={(e) => {
-                            const next = [...draft.servicesDetailed];
-                            next[i] = { ...next[i], body: e.target.value };
-                            setDraft({ ...draft, servicesDetailed: next });
-                          }}
-                          className="mt-1 w-full rounded-xl border border-lineDark bg-charcoal/50 px-4 py-3 text-sm text-slate resize-none"
-                        />
-
-                        <label className="mt-4 block text-xs uppercase tracking-wider text-slate">
-                          Features (one per line)
-                        </label>
-                        <textarea
-                          rows={3}
-                          value={(p.features || []).join('\n')}
-                          onChange={(e) => {
-                            const lines = e.target.value
-                              .split('\n')
-                              .map((s) => s.trim())
-                              .filter(Boolean);
-                            const next = [...draft.servicesDetailed];
-                            next[i] = { ...next[i], features: lines };
-                            setDraft({ ...draft, servicesDetailed: next });
-                          }}
-                          className="mt-1 w-full rounded-xl border border-lineDark bg-charcoal/50 px-4 py-3 text-sm text-slate resize-none"
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <h3 className="mt-3 font-serif text-lg">{p.title}</h3>
-                        <p className="mt-2 text-sm text-slate">{p.summary}</p>
-                      </>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-              {draft && (
-                <motion.button
-                  type="button"
-                  onClick={saveContent}
-                  className="mt-8 flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-navy"
-                >
-                  <Save className="h-4 w-4" />
-                  Save products
-                </motion.button>
-              )}
-            </motion.div>
+          {tab === 'manage-products' && (
+            <ManageProductsSection
+              products={content.servicesDetailed}
+              onRefresh={refresh}
+              showStatus={showStatus}
+            />
           )}
+
+          {tab === 'manage-machinery' && (
+            <ManageMachinerySection
+              machinery={content.machinery}
+              onRefresh={refresh}
+              showStatus={showStatus}
+            />
+          )}
+
         </div>
       </main>
     </motion.div>

@@ -7,7 +7,7 @@
   "images": {
     "heroHome": "http://localhost:5000/uploads/upload-1778828513991.png",
     "heroAbout": "https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=2400&q=80",
-    "heroProducts": "https://images.unsplash.com/photo-1465120232534-6129eec94400?auto=format&fit=crop&w=2400&q=80",
+    "heroProducts": "http://localhost:5000/uploads/upload-1778831630553.jpg",
     "heroInfrastructure": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=80",
     "heroContact": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2400&q=80",
     "textileDetail": "https://images.unsplash.com/photo-1618415510828-92d0ccd8c22a?auto=format&fit=crop&w=1600&q=80",

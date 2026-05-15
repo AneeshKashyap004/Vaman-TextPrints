@@ -1,0 +1,103 @@
+{
+  "machinery": [
+    {
+      "id": "osthoff-senge-singeing-machine",
+      "name": "Osthoff Senge Singeing Machine",
+      "description": "Surface fibre control for clean dye uptake",
+      "note": "Surface fibre control for clean dye uptake",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "dhall-cbr-machine",
+      "name": "Dhall CBR Machine",
+      "description": "Continuous bleaching range preparation",
+      "note": "Continuous bleaching range preparation",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "menzel-mercerizer",
+      "name": "Menzel Mercerizer",
+      "description": "Mercerizing for lustre, strength, and dye affinity",
+      "note": "Mercerizing for lustre, strength, and dye affinity",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "menzel-maxi-squeezer",
+      "name": "Menzel Maxi Squeezer",
+      "description": "Controlled expression for even wet pickup",
+      "note": "Controlled expression for even wet pickup",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "kuster-padding-machines",
+      "name": "Kuster Padding Machines",
+      "description": "Precision padding for consistent chemical application",
+      "note": "Precision padding for consistent chemical application",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "4-bowl-and-5-bowl-calendars",
+      "name": "4 Bowl and 5 Bowl Calendars",
+      "description": "Calendering for finish, gloss, and fabric stability",
+      "note": "Calendering for finish, gloss, and fabric stability",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "monforts-stenter",
+      "name": "Monforts Stenter",
+      "description": "Heat-setting and finishing with width control",
+      "note": "Heat-setting and finishing with width control",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "hi-tech-stenter",
+      "name": "Hi-Tech Stenter",
+      "description": "Advanced stentering for critical dimensional programs",
+      "note": "Advanced stentering for critical dimensional programs",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "stork-rotary-printing-machine",
+      "name": "Stork Rotary Printing Machine",
+      "description": "High-definition rotary printing at production scale",
+      "note": "High-definition rotary printing at production scale",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "dhall-soaper",
+      "name": "Dhall Soaper",
+      "description": "Washing sequences for fastness and cleanliness",
+      "note": "Washing sequences for fastness and cleanliness",
+      "highlights": [],
+      "image": null,
+      "images": []
+    },
+    {
+      "id": "dhall-zero-zero-machines",
+      "name": "Dhall Zero-Zero Machines",
+      "description": "Specialized finishing and treatment support",
+      "note": "Specialized finishing and treatment support",
+      "highlights": [],
+      "image": null,
+      "images": []
+    }
+  ]
+}

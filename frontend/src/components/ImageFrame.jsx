@@ -4,6 +4,8 @@ export default function ImageFrame({
   className = '',
   aspect = 'aspect-[16/10]',
   rounded = 'rounded-2xl md:rounded-3xl',
+  srcSet,
+  sizes,
 }) {
   return (
     <div
@@ -11,6 +13,8 @@ export default function ImageFrame({
     >
       <img
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
         alt={alt}
         className="h-full w-full object-cover transition duration-700 ease-luxury group-hover:scale-[1.04] group-hover:brightness-[1.05]"
         loading="lazy"

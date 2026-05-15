@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { normalizeSiteData } from './cmsNormalize.js';
+import { readProducts, migrateProductsFromSiteData } from './productStore.js';
+import { readMachinery, migrateMachineryFromSiteData } from './machineryStore.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -128,9 +131,14 @@ export const defaultSiteData = {
   products: [
     {
       id: 'dyeing',
+      number: 1,
       title: 'Dyeing',
+      category: 'Processing',
       summary: 'Controlled colour science for repeatable shades and robust fastness.',
+      description: 'Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.',
       body: 'Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.',
+      image: null,
+      images: [],
       features: ['Recipe-controlled pipelines', 'Fibre-specific curves', 'Shade consistency focus'],
     },
     {
@@ -191,17 +199,96 @@ export const defaultSiteData = {
     },
   ],
   machinery: [
-    { name: 'Osthoff Senge Singeing Machine', note: 'Surface fibre control for clean dye uptake' },
-    { name: 'Dhall CBR Machine', note: 'Continuous bleaching range preparation' },
-    { name: 'Menzel Mercerizer', note: 'Mercerizing for lustre, strength, and dye affinity' },
-    { name: 'Menzel Maxi Squeezer', note: 'Controlled expression for even wet pickup' },
-    { name: 'Kuster Padding Machines', note: 'Precision padding for consistent chemical application' },
-    { name: '4 Bowl and 5 Bowl Calendars', note: 'Calendering for finish, gloss, and fabric stability' },
-    { name: 'Monforts Stenter', note: 'Heat-setting and finishing with width control' },
-    { name: 'Hi-Tech Stenter', note: 'Advanced stentering for critical dimensional programs' },
-    { name: 'Stork Rotary Printing Machine', note: 'High-definition rotary printing at production scale' },
-    { name: 'Dhall Soaper', note: 'Washing sequences for fastness and cleanliness' },
-    { name: 'Dhall Zero-Zero Machines', note: 'Specialized finishing and treatment support' },
+    {
+      id: 'osthoff-senge-singeing',
+      name: 'Osthoff Senge Singeing Machine',
+      description: 'Surface fibre control for clean dye uptake and consistent preparation.',
+      note: 'Surface fibre control for clean dye uptake',
+      highlights: ['Singeing uniformity', 'Steamer integration', 'Export-grade surface prep'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'dhall-cbr',
+      name: 'Dhall CBR Machine',
+      description: 'Continuous bleaching range for reliable preparation throughput.',
+      note: 'Continuous bleaching range preparation',
+      highlights: ['Continuous bleaching', 'Stable liquor ratios'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'menzel-mercerizer',
+      name: 'Menzel Mercerizer',
+      description: 'Mercerizing for lustre, strength, and dye affinity.',
+      note: 'Mercerizing for lustre, strength, and dye affinity',
+      highlights: ['Lustre control', 'Strength enhancement'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'menzel-maxi-squeezer',
+      name: 'Menzel Maxi Squeezer',
+      description: 'Controlled expression for even wet pickup across widths.',
+      note: 'Controlled expression for even wet pickup',
+      highlights: ['Even expression', 'Width stability'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'kuster-padding',
+      name: 'Kuster Padding Machines',
+      description: 'Precision padding for consistent chemical application.',
+      note: 'Precision padding for consistent chemical application',
+      highlights: ['Chemical uniformity', 'Recipe repeatability'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'monforts-stenter',
+      name: 'Monforts Stenter',
+      description: 'Heat-setting and finishing with width control.',
+      note: 'Heat-setting and finishing with width control',
+      highlights: ['Width control', 'Heat setting'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'hi-tech-stenter',
+      name: 'Hi-Tech Stenter',
+      description: 'Advanced stentering for critical dimensional programs.',
+      note: 'Advanced stentering for critical dimensional programs',
+      highlights: ['Dimensional stability', 'Finishing precision'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'stork-rotary-printing',
+      name: 'Stork Rotary Printing Machine',
+      description: 'High-definition rotary printing at production scale.',
+      note: 'High-definition rotary printing at production scale',
+      highlights: ['Sharp repeats', 'Production cadence'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'dhall-soaper',
+      name: 'Dhall Soaper',
+      description: 'Washing sequences for fastness and cleanliness.',
+      note: 'Washing sequences for fastness and cleanliness',
+      highlights: ['Fastness washing', 'Clean surfaces'],
+      image: null,
+      images: [],
+    },
+    {
+      id: 'dhall-zero-zero',
+      name: 'Dhall Zero-Zero Machines',
+      description: 'Specialized finishing and treatment support.',
+      note: 'Specialized finishing and treatment support',
+      highlights: ['Specialized finishing', 'Treatment flexibility'],
+      image: null,
+      images: [],
+    },
   ],
   timeline: [
     { year: 'Foundations', title: 'Processing roots', detail: 'Started with cotton–polyester processing.' },
@@ -241,16 +328,40 @@ function ensureDataFile() {
   }
 }
 
-export function readSiteData() {
+function readSiteCore() {
   ensureDataFile();
-  const raw = fs.readFileSync(DATA_FILE, 'utf8');
-  return JSON.parse(raw);
+  const raw = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  const { products, machinery, ...core } = raw;
+  migrateProductsFromSiteData(products);
+  migrateMachineryFromSiteData(machinery);
+  return core;
+}
+
+export function readSiteData() {
+  const core = readSiteCore();
+  return {
+    ...core,
+    products: readProducts(),
+    machinery: readMachinery(),
+  };
 }
 
 export function writeSiteData(data) {
   ensureDataFile();
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-  return data;
+  const { products, machinery, ...core } = data;
+  fs.writeFileSync(DATA_FILE, JSON.stringify(core, null, 2), 'utf8');
+  return readSiteData();
+}
+
+export function initDataStores() {
+  ensureDataFile();
+  const raw = fs.existsSync(DATA_FILE)
+    ? JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'))
+    : defaultSiteData;
+  migrateProductsFromSiteData(raw.products);
+  migrateMachineryFromSiteData(raw.machinery);
+  readProducts();
+  readMachinery();
 }
 
 export { DATA_FILE, DATA_DIR };

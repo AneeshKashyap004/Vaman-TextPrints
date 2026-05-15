@@ -7,6 +7,7 @@ import ImageFrame from '../components/ImageFrame';
 import PremiumButton from '../components/PremiumButton';
 import AnimatedCounter from '../components/AnimatedCounter';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { pickPrimaryImage, pickThumb, resolveMediaUrl } from '../lib/media';
 
 const statIcons = [Gauge, Shield, Users, Award];
 
@@ -160,7 +161,9 @@ export default function InfrastructurePage() {
           </Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {machinery.map((m, i) => {
-              const visual = gallery[i % gallery.length];
+              const fallback = gallery[i % gallery.length];
+              const visual = pickPrimaryImage(m, fallback);
+              const thumb = pickThumb(m) || visual;
               return (
                 <Reveal key={m.name} delay={(i % 6) * 0.04}>
                   <motion.article
@@ -170,10 +173,17 @@ export default function InfrastructurePage() {
                   >
                     <motion.div className="relative aspect-[16/11] overflow-hidden">
                       <img
-                        src={visual}
-                        alt=""
+                        src={thumb}
+                        srcSet={
+                          m.images?.length
+                            ? `${resolveMediaUrl(m.image || m.images[0]?.url)} 1200w, ${thumb} 480w`
+                            : undefined
+                        }
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        alt={m.name}
                         className="h-full w-full object-cover transition duration-[900ms] ease-luxury group-hover:scale-[1.06]"
                         loading="lazy"
+                        decoding="async"
                       />
                       <motion.div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent opacity-90" />
                       <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/10 font-serif text-sm text-gold backdrop-blur-md">
@@ -182,7 +192,19 @@ export default function InfrastructurePage() {
                     </motion.div>
                     <div className="flex flex-1 flex-col p-8">
                       <h3 className="font-serif text-xl text-ink md:text-2xl">{m.name}</h3>
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{m.note}</p>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">
+                        {m.note || m.description}
+                      </p>
+                      {(m.highlights || []).length > 0 && (
+                        <ul className="mt-4 space-y-1.5 border-t border-line pt-4 text-xs text-ink/80">
+                          {m.highlights.slice(0, 3).map((h) => (
+                            <li key={h} className="flex gap-2">
+                              <span className="text-gold">·</span>
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                       <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold opacity-80 transition group-hover:opacity-100">
                         Line detail
                         <ArrowUpRight className="h-3.5 w-3.5" />
