@@ -1,0 +1,1 @@
+var e=`http://localhost:5000/api`.replace(/\/api\/?$/,``);function t(t){return t?/^https?:\/\//i.test(t)?t:`${e}${t.startsWith(`/`)?t:`/${t}`}`:null}function n(e,n){return e&&t(e.image||e.images?.[0]?.url||e.images?.[0]?.path)||n}function r(e){let n=e?.images?.find(t=>t.url===e.image)||e?.images?.[0];return t(n?.thumbUrl||n?.url||e?.image)}export{r as n,t as r,n as t};
