@@ -29,14 +29,14 @@ export const company = {
   heroSubtext:
     'Premium textile dyeing, processing, and manufacturing from Telangana — built for global quality, consistency, and scale.',
   about:
-    'Vaaman Texprint Private Limited specializes in textile processing across cotton, polyester cotton, cotton lycra, viscose, and lyocell fabrics. From preparation to finishing, our workflows are engineered for shade integrity, fastness, and dependable throughput.',
+    'Vaaman Texprint Private Limited specializes in textile processing across cotton, polyester cotton, cotton lycra, viscose, and lyocell fabrics. From preparation to finishing, our workflows are engineered for shade integrity, fastness, printing, sharp printing to meet the customer requirement',
   background:
     'The company began with cotton–polyester processing and expanded systematically into multiple fabric categories — aligning processes, machinery, and quality systems with international expectations.',
   vision:
     'To satisfy customers and meet global standards with superior quality and on-time delivery.',
   counters: [
     { label: 'Years of craft', numeric: 18, suffix: '+', duration: 1.6 },
-    { label: 'Fabric categories', numeric: 6, suffix: '', duration: 1.4 },
+    { label: 'Fabric categories', numeric: 6, suffix: '+', duration: 1.4 },
     { label: 'Quality systems', numeric: 100, suffix: '%', duration: 1.8 },
     { label: 'Key machinery lines', numeric: 11, suffix: '+', duration: 1.5 },
   ],
@@ -123,15 +123,15 @@ export const servicesDetailed = [
   {
     id: 'dyeing',
     title: 'Dyeing',
-    summary: 'Controlled colour science for repeatable shades and robust fastness.',
+    summary: 'Controlled colour science for repeatable shades and robust fastness with the coordination of advanced lab.',
     body: 'Our dyeing approach emphasizes recipe discipline, liquor circulation, and machine parameters matched to fibre class — delivering predictable outcomes across lots.',
     features: ['Recipe-controlled pipelines', 'Fibre-specific curves', 'Shade consistency focus'],
   },
   {
     id: 'textile-processing',
     title: 'Textile processing',
-    summary: 'End-to-end preparation and treatment sequences for woven and knit constructions.',
-    body: 'From desizing and scouring through specialized treatments, processing is sequenced to protect fibre integrity while preparing fabrics for dyeing, printing, or finishing.',
+    summary: 'End-to-end preparation and treatment sequences.',
+    body: 'From desizing and scouring through specialized treatments, processing is sequenced to protect fibre integrity while preparing fabrics for dyeing, printing, or finishing with advanced machinaries',
     features: ['Sequenced treatments', 'Throughput planning', 'Defect prevention mindset'],
   },
   {
@@ -180,23 +180,24 @@ export const servicesDetailed = [
     id: 'finishing',
     title: 'Finishing',
     summary: 'Final mechanical and chemical treatments that define hand-feel and performance.',
-    body: 'Finishing is treated as the capstone of processing — stabilizing dimensions, refining touch, and aligning fabric performance to the end customer’s specification.',
+    
     features: ['Dimensional stability', 'Performance alignment', 'Premium touch control'],
   },
 ];
 
 export const machinery = [
-  { name: 'Osthoff Senge Singeing Machine', note: 'Surface fibre control for clean dye uptake' },
-  { name: 'Dhall CBR Machine', note: 'Continuous bleaching range preparation' },
+  { name: 'Osthoff Singeing Machine', note: 'Surface fibre control for clean dye uptake & With steamer for rapid designing ' },
+  { name: 'Dhall CBR Machine', note: 'For bleach process' },
   { name: 'Menzel Mercerizer', note: 'Mercerizing for lustre, strength, and dye affinity' },
-  { name: 'Menzel Maxi Squeezer', note: 'Controlled expression for even wet pickup' },
-  { name: 'Kuster Padding Machines', note: 'Precision padding for consistent chemical application' },
-  { name: '4 Bowl and 5 Bowl Calendars', note: 'Calendering for finish, gloss, and fabric stability' },
-  { name: 'Monforts Stenter', note: 'Heat-setting and finishing with width control' },
-  { name: 'Hi-Tech Stenter', note: 'Advanced stentering for critical dimensional programs' },
-  { name: 'Stork Rotary Printing Machine', note: 'High-definition rotary printing at scale' },
+  { name: 'Menzel Maxi Jiggers', note: 'For even dyeing' },
+  { name: 'Kuster Padding Machine', note: 'Precision padding for consistent dyes and chemical application' },
+  { name: '4 Bowl and 5 Bowl Calendars', note: 'For luster & surface' },
+  { name: 'Harish Stenter', note: 'Finishing, Heat Setting, Batching, Weft straightening' },
+  { name: 'Hi-Tech Stenter', note: 'Finishing, Heat Setting, Batching' },
+  { name: 'Stormac Rotary Printing Machine', note: 'High-definition rotary machine' },
   { name: 'Dhall Soaper', note: 'Washing sequences for fastness and cleanliness' },
-  { name: 'Dhall Zero-Zero Machines', note: 'Specialized finishing and treatment support' },
+  { name: 'Dhall Zero-Zero Machine', note: 'Specialized finishing and treatment support' },
+  { name: 'Sanforizing Machine', note: 'For dimentional stability' },
 ];
 
 export const timeline = [
@@ -206,8 +207,9 @@ export const timeline = [
 ];
 
 export const infrastructureHighlights = [
-  'Singeeing, mercerizing, and continuous ranges for preparation',
-  'Padding, calendering, and stentering for finishing control',
-  'Rotary printing integrated with washing and finishing',
   'Production planning aligned to dispatch commitments',
+  'Singeing, mercerizing, and continuous ranges for preparation',
+  'Padding, Exaust dyeing, Polyester dyeing',
+  'Rotary printing',
+  'Finishing, Stentering, Calendering, and Sanforizing',
 ];

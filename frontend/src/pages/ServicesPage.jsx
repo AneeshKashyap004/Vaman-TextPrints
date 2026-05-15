@@ -39,9 +39,8 @@ export default function ServicesPage() {
       <InnerHero
         image={images.heroServices}
         eyebrow="Services"
-        title="Processing disciplines — each tuned to fibre behaviour"
-        subtitle="Dyeing, preparation, printing, and finishing orchestrated as one coherent manufacturing system."
-      />
+        title="Processing disciplines each tuned to fibre behaviour"
+        subtitle="Preprocess, Dyeing, Printing and Finishing "/>
 
       <section className="py-section px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -91,7 +90,7 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                       <PremiumButton to="/contact" variant="outline" className="mt-10">
-                        Discuss this track
+                        Contact us to discuss your needs
                         <ArrowUpRight className="h-4 w-4" />
                       </PremiumButton>
                     </div>

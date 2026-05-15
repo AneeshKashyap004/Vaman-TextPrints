@@ -16,24 +16,16 @@ export default function InfrastructurePage() {
       <InnerHero
         image={images.heroInfrastructure}
         eyebrow="Infrastructure"
-        title="Industrial muscle. Refined control."
-        subtitle="European and Indian ranges orchestrated for preparation, colour, dimensional stability, and finishing — at export cadence."
-      />
+        title="For best quality and quantity production."/>
 
       <section className="border-b border-line bg-white py-section px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <SectionHeading
-                eyebrow="Capability"
-                title="Machinery roster engineered for full-spectrum textile processing"
-                subtitle="Singeeing through printing and finishing — integrated for predictable outcomes and disciplined changeovers."
-              />
-            </div>
+          
             <div className="rounded-3xl border border-line bg-surface p-8 shadow-card lg:col-span-5">
               <Cpu className="h-8 w-8 text-gold" />
               <p className="mt-4 text-sm leading-relaxed text-slate">
-                Each line is operated within documented parameters — so approvals translate into repeatable bulk performance.
+                Each line is operated within documented parameters — so approvals translate into repeatable bulk performance possible with: <br></br>Skilled workers <br></br>  Experinced Staff<br></br>Dedicated Officers<br></br>Full support of Management
               </p>
             </div>
           </div>
