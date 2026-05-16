@@ -3,18 +3,18 @@
     {
       "id": "osthoff-senge-singeing-machine",
       "name": "Osthoff Singeing Machine",
-      "description": "Surface fibre control for clean dye uptake",
-      "note": "Surface fibre control for clean dye uptake",
+      "description": "With steamer for rapid desiging and surface fibre control for clean dye.",
+      "note": "With steamer for rapid desiging and surface fibre control for clean dye.",
       "highlights": [],
-      "image": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
+      "image": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924778643-i49dcg.webp",
       "images": [
         {
-          "id": "mac-1778924170667-48dnev",
-          "url": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
-          "thumbUrl": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev-thumb.webp",
-          "path": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
-          "thumbPath": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev-thumb.webp",
-          "filename": "mac-1778924170667-48dnev.webp"
+          "id": "mac-1778924778643-i49dcg",
+          "url": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924778643-i49dcg.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924778643-i49dcg-thumb.webp",
+          "path": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924778643-i49dcg.webp",
+          "thumbPath": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924778643-i49dcg-thumb.webp",
+          "filename": "mac-1778924778643-i49dcg.webp"
         }
       ]
     },
@@ -22,73 +22,145 @@
       "id": "dhall-cbr-machine",
       "name": "Dhall CBR Machine",
       "description": "Continuous bleaching range preparation",
-      "note": "Continuous bleaching range preparation",
+      "note": "For fast bleach process.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/dhall-cbr-machine/mac-1778924953601-yqmwkm.webp",
+      "images": [
+        {
+          "id": "mac-1778924953601-yqmwkm",
+          "url": "http://localhost:5000/uploads/machinery/dhall-cbr-machine/mac-1778924953601-yqmwkm.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/dhall-cbr-machine/mac-1778924953601-yqmwkm-thumb.webp",
+          "path": "/uploads/machinery/dhall-cbr-machine/mac-1778924953601-yqmwkm.webp",
+          "thumbPath": "/uploads/machinery/dhall-cbr-machine/mac-1778924953601-yqmwkm-thumb.webp",
+          "filename": "mac-1778924953601-yqmwkm.webp"
+        }
+      ]
     },
     {
       "id": "menzel-mercerizer",
       "name": "Menzel Mercerizer",
       "description": "Mercerizing for lustre, strength, and dye affinity",
-      "note": "Mercerizing for lustre, strength, and dye affinity",
+      "note": "Mercerizing for lustre, strength, and dye affinity.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/menzel-mercerizer/mac-1778925147433-j72uul.webp",
+      "images": [
+        {
+          "id": "mac-1778925147433-j72uul",
+          "url": "http://localhost:5000/uploads/machinery/menzel-mercerizer/mac-1778925147433-j72uul.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/menzel-mercerizer/mac-1778925147433-j72uul-thumb.webp",
+          "path": "/uploads/machinery/menzel-mercerizer/mac-1778925147433-j72uul.webp",
+          "thumbPath": "/uploads/machinery/menzel-mercerizer/mac-1778925147433-j72uul-thumb.webp",
+          "filename": "mac-1778925147433-j72uul.webp"
+        }
+      ]
     },
     {
       "id": "menzel-maxi-squeezer",
-      "name": "Menzel Maxi Squeezer",
+      "name": "Menzel Maxi jiggers.",
       "description": "Controlled expression for even wet pickup",
-      "note": "Controlled expression for even wet pickup",
+      "note": "For even Dyeing.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/menzel-maxi-squeezer/mac-1778925179783-wyfojj.webp",
+      "images": [
+        {
+          "id": "mac-1778925179783-wyfojj",
+          "url": "http://localhost:5000/uploads/machinery/menzel-maxi-squeezer/mac-1778925179783-wyfojj.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/menzel-maxi-squeezer/mac-1778925179783-wyfojj-thumb.webp",
+          "path": "/uploads/machinery/menzel-maxi-squeezer/mac-1778925179783-wyfojj.webp",
+          "thumbPath": "/uploads/machinery/menzel-maxi-squeezer/mac-1778925179783-wyfojj-thumb.webp",
+          "filename": "mac-1778925179783-wyfojj.webp"
+        }
+      ]
     },
     {
       "id": "kuster-padding-machines",
       "name": "Kuster Padding Machines",
       "description": "Precision padding for consistent chemical application",
-      "note": "Precision padding for consistent chemical application",
+      "note": "Precision padding for consistent dyes and chemical application.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/kuster-padding-machines/mac-1778925253251-9exig7.webp",
+      "images": [
+        {
+          "id": "mac-1778925253251-9exig7",
+          "url": "http://localhost:5000/uploads/machinery/kuster-padding-machines/mac-1778925253251-9exig7.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/kuster-padding-machines/mac-1778925253251-9exig7-thumb.webp",
+          "path": "/uploads/machinery/kuster-padding-machines/mac-1778925253251-9exig7.webp",
+          "thumbPath": "/uploads/machinery/kuster-padding-machines/mac-1778925253251-9exig7-thumb.webp",
+          "filename": "mac-1778925253251-9exig7.webp"
+        }
+      ]
     },
     {
       "id": "4-bowl-and-5-bowl-calendars",
       "name": "4 Bowl and 5 Bowl Calendars",
       "description": "Calendering for finish, gloss, and fabric stability",
-      "note": "Calendering for finish, gloss, and fabric stability",
+      "note": "For luster and surface.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/4-bowl-and-5-bowl-calendars/mac-1778925311843-a45d2n.webp",
+      "images": [
+        {
+          "id": "mac-1778925311843-a45d2n",
+          "url": "http://localhost:5000/uploads/machinery/4-bowl-and-5-bowl-calendars/mac-1778925311843-a45d2n.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/4-bowl-and-5-bowl-calendars/mac-1778925311843-a45d2n-thumb.webp",
+          "path": "/uploads/machinery/4-bowl-and-5-bowl-calendars/mac-1778925311843-a45d2n.webp",
+          "thumbPath": "/uploads/machinery/4-bowl-and-5-bowl-calendars/mac-1778925311843-a45d2n-thumb.webp",
+          "filename": "mac-1778925311843-a45d2n.webp"
+        }
+      ]
     },
     {
       "id": "monforts-stenter",
-      "name": "Monforts Stenter",
+      "name": "Harish Stenter",
       "description": "Heat-setting and finishing with width control",
-      "note": "Heat-setting and finishing with width control",
+      "note": "Finishing, Heat-setting, Batching, Wefting Straightening.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/monforts-stenter/mac-1778925397157-b8ccp4.webp",
+      "images": [
+        {
+          "id": "mac-1778925397157-b8ccp4",
+          "url": "http://localhost:5000/uploads/machinery/monforts-stenter/mac-1778925397157-b8ccp4.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/monforts-stenter/mac-1778925397157-b8ccp4-thumb.webp",
+          "path": "/uploads/machinery/monforts-stenter/mac-1778925397157-b8ccp4.webp",
+          "thumbPath": "/uploads/machinery/monforts-stenter/mac-1778925397157-b8ccp4-thumb.webp",
+          "filename": "mac-1778925397157-b8ccp4.webp"
+        }
+      ]
     },
     {
       "id": "hi-tech-stenter",
       "name": "Hi-Tech Stenter",
       "description": "Advanced stentering for critical dimensional programs",
-      "note": "Advanced stentering for critical dimensional programs",
+      "note": "Finishing, Heat-setting, Batching",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/hi-tech-stenter/mac-1778925523912-ffuye9.webp",
+      "images": [
+        {
+          "id": "mac-1778925523912-ffuye9",
+          "url": "http://localhost:5000/uploads/machinery/hi-tech-stenter/mac-1778925523912-ffuye9.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/hi-tech-stenter/mac-1778925523912-ffuye9-thumb.webp",
+          "path": "/uploads/machinery/hi-tech-stenter/mac-1778925523912-ffuye9.webp",
+          "thumbPath": "/uploads/machinery/hi-tech-stenter/mac-1778925523912-ffuye9-thumb.webp",
+          "filename": "mac-1778925523912-ffuye9.webp"
+        }
+      ]
     },
     {
       "id": "stork-rotary-printing-machine",
       "name": "Stork Rotary Printing Machine",
       "description": "High-definition rotary printing at production scale",
-      "note": "High-definition rotary printing at production scale",
+      "note": "High-definition rotary machine",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/stork-rotary-printing-machine/mac-1778925575079-mqikcm.webp",
+      "images": [
+        {
+          "id": "mac-1778925575079-mqikcm",
+          "url": "http://localhost:5000/uploads/machinery/stork-rotary-printing-machine/mac-1778925575079-mqikcm.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/stork-rotary-printing-machine/mac-1778925575079-mqikcm-thumb.webp",
+          "path": "/uploads/machinery/stork-rotary-printing-machine/mac-1778925575079-mqikcm.webp",
+          "thumbPath": "/uploads/machinery/stork-rotary-printing-machine/mac-1778925575079-mqikcm-thumb.webp",
+          "filename": "mac-1778925575079-mqikcm.webp"
+        }
+      ]
     },
     {
       "id": "dhall-soaper",
@@ -96,17 +168,35 @@
       "description": "Washing sequences for fastness and cleanliness",
       "note": "Washing sequences for fastness and cleanliness",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/dhall-soaper/mac-1778925628438-k1kusz.webp",
+      "images": [
+        {
+          "id": "mac-1778925628438-k1kusz",
+          "url": "http://localhost:5000/uploads/machinery/dhall-soaper/mac-1778925628438-k1kusz.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/dhall-soaper/mac-1778925628438-k1kusz-thumb.webp",
+          "path": "/uploads/machinery/dhall-soaper/mac-1778925628438-k1kusz.webp",
+          "thumbPath": "/uploads/machinery/dhall-soaper/mac-1778925628438-k1kusz-thumb.webp",
+          "filename": "mac-1778925628438-k1kusz.webp"
+        }
+      ]
     },
     {
       "id": "dhall-zero-zero-machines",
-      "name": "Dhall Zero-Zero Machines",
+      "name": "Sanforizing Machine",
       "description": "Specialized finishing and treatment support",
-      "note": "Specialized finishing and treatment support",
+      "note": "For Dimensional Stability.",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0.webp",
+      "images": [
+        {
+          "id": "mac-1778925721892-yoevm0",
+          "url": "http://localhost:5000/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0-thumb.webp",
+          "path": "/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0.webp",
+          "thumbPath": "/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0-thumb.webp",
+          "filename": "mac-1778925721892-yoevm0.webp"
+        }
+      ]
     }
   ]
 }

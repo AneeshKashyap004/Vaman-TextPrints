@@ -11,6 +11,26 @@ import { pickPrimaryImage, pickThumb, resolveMediaUrl } from '../lib/media';
 
 const statIcons = [Gauge, Shield, Users, Award];
 
+const teamPillars = [
+  'Skilled workers',
+  'Experienced staff',
+  'Dedicated officers',
+  'Management support',
+];
+
+const defaultCapabilityIntro =
+  'Each line is operated within documented parameters — so approvals translate into repeatable bulk performance.';
+
+function capabilityIntro(body) {
+  if (!body?.trim()) return defaultCapabilityIntro;
+  const trimmed = body.trim().replace(/\s*:\s*$/, '');
+  const withoutList = trimmed.replace(
+    /\s+with\s+(skilled workers|experienced staff).+$/i,
+    ''
+  );
+  return withoutList.trim() || defaultCapabilityIntro;
+}
+
 export default function InfrastructurePage() {
   const { content } = useSiteContent();
   const {
@@ -23,9 +43,7 @@ export default function InfrastructurePage() {
   } = content;
   const infraMeta = pages?.infrastructure || {};
 
-  const capabilityBody =
-    infrastructureCapability?.body ||
-    'Each line is operated within documented parameters — so approvals translate into repeatable bulk performance with skilled workers, experienced staff, dedicated officers, and full support of management.';
+  const capabilityIntroText = capabilityIntro(infrastructureCapability?.body);
 
   const gallery = [
     images.heroInfrastructure,
@@ -39,30 +57,28 @@ export default function InfrastructurePage() {
         image={images.infrastructureCapability || images.heroInfrastructure}
         eyebrow={infraMeta.eyebrow || 'Infrastructure'}
         title={infraMeta.title || infrastructureCapability?.title || 'For best quality and quantity production'}
-        subtitle={infraMeta.subtitle || capabilityBody}
+        subtitle={infraMeta.subtitle || capabilityIntroText}
       />
 
       <section className="border-b border-line bg-white py-section px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
-            <Reveal className="lg:col-span-5">
-              <div className="flex h-full flex-col rounded-3xl border border-line bg-surface p-8 shadow-card lg:p-10">
-                <Cpu className="h-9 w-9 text-gold" />
-                <h2 className="mt-6 font-serif text-2xl text-ink md:text-3xl">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
+            <Reveal className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+              <div className="glass-panel flex flex-col rounded-2xl border border-line p-6 shadow-card lg:p-8">
+                <Cpu className="h-6 w-6 text-gold" />
+                <h2 className="mt-4 font-serif text-2xl text-ink md:text-[1.65rem]">
                   Operational discipline
                 </h2>
-                <p className="mt-5 flex-1 text-sm leading-relaxed text-slate md:text-base">
-                  {capabilityBody}
+                <p className="mt-3 text-sm leading-relaxed text-slate">
+                  {capabilityIntroText}
                 </p>
-                <ul className="mt-8 space-y-3 border-t border-line pt-8 text-sm text-ink/90">
-                  {['Skilled workers', 'Experienced staff', 'Dedicated officers', 'Management support'].map(
-                    (item) => (
-                      <li key={item} className="flex items-center gap-3">
-                        <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                        {item}
-                      </li>
-                    )
-                  )}
+                <ul className="mt-6 space-y-3 border-t border-line pt-6">
+                  {teamPillars.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm text-slate">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </Reveal>
@@ -72,17 +88,17 @@ export default function InfrastructurePage() {
                 <ImageFrame
                   src={images.infrastructureCapability || images.heroInfrastructure}
                   alt="Manufacturing capability"
-                  aspect="aspect-[21/10]"
-                  rounded="rounded-3xl"
+                  aspect="aspect-[16/9]"
+                  rounded="rounded-2xl"
                 />
               </Reveal>
               {(company.counters || []).slice(0, 4).map((stat, i) => {
                 const Icon = statIcons[i] || Gauge;
                 return (
-                  <Reveal key={stat.label} delay={i * 0.06}>
+                  <Reveal key={stat.label} delay={i * 0.06} className="h-full">
                     <motion.div
                       whileHover={{ y: -6, boxShadow: '0 28px 70px rgba(11,31,58,0.14)' }}
-                      className="glass-panel flex h-full flex-col rounded-2xl p-6 transition-shadow duration-500"
+                      className="glass-panel flex h-full min-h-[9.5rem] flex-col rounded-2xl p-6 transition-shadow duration-500"
                     >
                       <Icon className="h-6 w-6 text-gold" />
                       <p className="mt-4 font-serif text-3xl text-ink">
@@ -92,7 +108,7 @@ export default function InfrastructurePage() {
                           duration={stat.duration}
                         />
                       </p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-slate">
+                      <p className="mt-auto pt-2 text-xs uppercase tracking-[0.18em] text-slate">
                         {stat.label}
                       </p>
                     </motion.div>

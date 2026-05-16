@@ -8,8 +8,17 @@
       "description": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
       "body": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/dyeing/pro-1778926253090-v8xn2t.webp",
+      "images": [
+        {
+          "id": "pro-1778926253090-v8xn2t",
+          "url": "http://localhost:5000/uploads/products/dyeing/pro-1778926253090-v8xn2t.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/dyeing/pro-1778926253090-v8xn2t-thumb.webp",
+          "path": "/uploads/products/dyeing/pro-1778926253090-v8xn2t.webp",
+          "thumbPath": "/uploads/products/dyeing/pro-1778926253090-v8xn2t-thumb.webp",
+          "filename": "pro-1778926253090-v8xn2t.webp"
+        }
+      ],
       "features": [
         "Recipe-controlled pipelines",
         "Fibre-specific curves",
@@ -24,8 +33,17 @@
       "description": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
       "body": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/textile-processing/pro-1778926334722-domqcn.webp",
+      "images": [
+        {
+          "id": "pro-1778926334722-domqcn",
+          "url": "http://localhost:5000/uploads/products/textile-processing/pro-1778926334722-domqcn.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/textile-processing/pro-1778926334722-domqcn-thumb.webp",
+          "path": "/uploads/products/textile-processing/pro-1778926334722-domqcn.webp",
+          "thumbPath": "/uploads/products/textile-processing/pro-1778926334722-domqcn-thumb.webp",
+          "filename": "pro-1778926334722-domqcn.webp"
+        }
+      ],
       "features": [
         "Sequenced treatments",
         "Throughput planning",
@@ -40,8 +58,17 @@
       "description": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
       "body": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/cotton/pro-1778926382914-lfzqvh.webp",
+      "images": [
+        {
+          "id": "pro-1778926382914-lfzqvh",
+          "url": "http://localhost:5000/uploads/products/cotton/pro-1778926382914-lfzqvh.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/cotton/pro-1778926382914-lfzqvh-thumb.webp",
+          "path": "/uploads/products/cotton/pro-1778926382914-lfzqvh.webp",
+          "thumbPath": "/uploads/products/cotton/pro-1778926382914-lfzqvh-thumb.webp",
+          "filename": "pro-1778926382914-lfzqvh.webp"
+        }
+      ],
       "features": [
         "Natural fibre expertise",
         "Handle & lustre control",
@@ -56,8 +83,17 @@
       "description": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
       "body": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/polyester-cotton/pro-1778926423812-q19y3d.webp",
+      "images": [
+        {
+          "id": "pro-1778926423812-q19y3d",
+          "url": "http://localhost:5000/uploads/products/polyester-cotton/pro-1778926423812-q19y3d.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/polyester-cotton/pro-1778926423812-q19y3d-thumb.webp",
+          "path": "/uploads/products/polyester-cotton/pro-1778926423812-q19y3d.webp",
+          "thumbPath": "/uploads/products/polyester-cotton/pro-1778926423812-q19y3d-thumb.webp",
+          "filename": "pro-1778926423812-q19y3d.webp"
+        }
+      ],
       "features": [
         "Blend-aware recipes",
         "Thermal discipline",
@@ -72,8 +108,17 @@
       "description": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
       "body": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/viscose/pro-1778926511990-a8tgsm.webp",
+      "images": [
+        {
+          "id": "pro-1778926511990-a8tgsm",
+          "url": "http://localhost:5000/uploads/products/viscose/pro-1778926511990-a8tgsm.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/viscose/pro-1778926511990-a8tgsm-thumb.webp",
+          "path": "/uploads/products/viscose/pro-1778926511990-a8tgsm.webp",
+          "thumbPath": "/uploads/products/viscose/pro-1778926511990-a8tgsm-thumb.webp",
+          "filename": "pro-1778926511990-a8tgsm.webp"
+        }
+      ],
       "features": [
         "Gentle mechanical profiles",
         "Moisture control",
@@ -88,8 +133,17 @@
       "description": "Lyocell programmes prioritize fibrillation control and finishing selection.",
       "body": "Lyocell programmes prioritize fibrillation control and finishing selection.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/lyocell/pro-1778926609647-dbyo41.webp",
+      "images": [
+        {
+          "id": "pro-1778926609647-dbyo41",
+          "url": "http://localhost:5000/uploads/products/lyocell/pro-1778926609647-dbyo41.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/lyocell/pro-1778926609647-dbyo41-thumb.webp",
+          "path": "/uploads/products/lyocell/pro-1778926609647-dbyo41.webp",
+          "thumbPath": "/uploads/products/lyocell/pro-1778926609647-dbyo41-thumb.webp",
+          "filename": "pro-1778926609647-dbyo41.webp"
+        }
+      ],
       "features": [
         "Fibrillation awareness",
         "Premium finishing paths",
@@ -104,8 +158,17 @@
       "description": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
       "body": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/cotton-lycra/pro-1778926776183-rkwok0.webp",
+      "images": [
+        {
+          "id": "pro-1778926776183-rkwok0",
+          "url": "http://localhost:5000/uploads/products/cotton-lycra/pro-1778926776183-rkwok0.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/cotton-lycra/pro-1778926776183-rkwok0-thumb.webp",
+          "path": "/uploads/products/cotton-lycra/pro-1778926776183-rkwok0.webp",
+          "thumbPath": "/uploads/products/cotton-lycra/pro-1778926776183-rkwok0-thumb.webp",
+          "filename": "pro-1778926776183-rkwok0.webp"
+        }
+      ],
       "features": [
         "Tension discipline",
         "Recovery protection",
@@ -120,8 +183,17 @@
       "description": "Printing operations supported by robust preparation and finishing.",
       "body": "Printing operations supported by robust preparation and finishing.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/printing/pro-1778926726195-e19hum.webp",
+      "images": [
+        {
+          "id": "pro-1778926726195-e19hum",
+          "url": "http://localhost:5000/uploads/products/printing/pro-1778926726195-e19hum.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/printing/pro-1778926726195-e19hum-thumb.webp",
+          "path": "/uploads/products/printing/pro-1778926726195-e19hum.webp",
+          "thumbPath": "/uploads/products/printing/pro-1778926726195-e19hum-thumb.webp",
+          "filename": "pro-1778926726195-e19hum.webp"
+        }
+      ],
       "features": [
         "Rotary production mindset",
         "Repeat precision",
@@ -136,8 +208,17 @@
       "description": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
       "body": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
       "category": "General",
-      "image": null,
-      "images": [],
+      "image": "http://localhost:5000/uploads/products/finishing/pro-1778926808923-acuusv.webp",
+      "images": [
+        {
+          "id": "pro-1778926808923-acuusv",
+          "url": "http://localhost:5000/uploads/products/finishing/pro-1778926808923-acuusv.webp",
+          "thumbUrl": "http://localhost:5000/uploads/products/finishing/pro-1778926808923-acuusv-thumb.webp",
+          "path": "/uploads/products/finishing/pro-1778926808923-acuusv.webp",
+          "thumbPath": "/uploads/products/finishing/pro-1778926808923-acuusv-thumb.webp",
+          "filename": "pro-1778926808923-acuusv.webp"
+        }
+      ],
       "features": [
         "Dimensional stability",
         "Performance alignment",
