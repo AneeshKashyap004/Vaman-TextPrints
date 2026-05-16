@@ -1,1 +1,0 @@
-import{M as e,P as t}from"./createLucideIcon-CtTbp19n.js";import{o as n}from"./index-BHS6W_BN.js";var r=t(e(),1);function i(){let e=(0,r.useContext)(n);if(!e)throw Error(`useSiteContent must be used within SiteContentProvider`);return e}export{i as t};
