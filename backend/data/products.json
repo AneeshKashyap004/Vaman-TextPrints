@@ -7,7 +7,7 @@
       "summary": "Controlled colour science for repeatable shades and robust fastness.",
       "description": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
       "body": "Our dyeing approach emphasizes recipe discipline and machine parameters matched to fibre class.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/dyeing/pro-1778926253090-v8xn2t.webp",
       "images": [
         {
@@ -32,7 +32,7 @@
       "summary": "End-to-end preparation and treatment sequences for woven.",
       "description": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
       "body": "From desizing and scouring through specialized treatments for dyeing, printing, or finishing.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/textile-processing/pro-1778926334722-domqcn.webp",
       "images": [
         {
@@ -57,7 +57,7 @@
       "summary": "Natural-fibre expertise with emphasis on handle and lustre.",
       "description": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
       "body": "Cotton programmes balance cleaning, bleaching, and dye uptake.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/cotton/pro-1778926382914-lfzqvh.webp",
       "images": [
         {
@@ -82,7 +82,7 @@
       "summary": "Blend-aware parameters for even dye distribution.",
       "description": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
       "body": "Polycot workflows account for differential dye affinity and thermal sensitivity.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/polyester-cotton/pro-1778926423812-q19y3d.webp",
       "images": [
         {
@@ -107,7 +107,7 @@
       "summary": "Low-tension, moisture-aware handling for regenerated cellulosics.",
       "description": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
       "body": "Viscose processing emphasizes gentle mechanical action and controlled chemistry.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/viscose/pro-1778926511990-a8tgsm.webp",
       "images": [
         {
@@ -132,7 +132,7 @@
       "summary": "Precision processing for premium hand-feel and colour clarity.",
       "description": "Lyocell programmes prioritize fibrillation control and finishing selection.",
       "body": "Lyocell programmes prioritize fibrillation control and finishing selection.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/lyocell/pro-1778926609647-dbyo41.webp",
       "images": [
         {
@@ -157,7 +157,7 @@
       "summary": "Stretch constructions processed with recovery in mind.",
       "description": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
       "body": "Elastane-inclusive fabrics are run with tension discipline and heat management.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/cotton-lycra/pro-1778926776183-rkwok0.webp",
       "images": [
         {
@@ -182,7 +182,7 @@
       "summary": "Rotary printing for bold graphics at production scale.",
       "description": "Printing operations supported by robust preparation and finishing.",
       "body": "Printing operations supported by robust preparation and finishing.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/printing/pro-1778926726195-e19hum.webp",
       "images": [
         {
@@ -207,7 +207,7 @@
       "summary": "Final treatments that define hand-feel and performance.",
       "description": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
       "body": "Finishing stabilizes dimensions and aligns fabric performance to specification.",
-      "category": "General",
+      "category": "",
       "image": "http://localhost:5000/uploads/products/finishing/pro-1778926808923-acuusv.webp",
       "images": [
         {

@@ -163,7 +163,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Capabilities"
             title="Processing breadth across natural, blend, and regenerated fibres"
-            subtitle="Each programme is engineered for shade integrity, mechanical stability, and the performance your customers expect."
+            subtitle="Each programme is engineered for shade integrity, mechanical stability, and the performance of customers expect."
             align="center"
           />
           <div className="mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">

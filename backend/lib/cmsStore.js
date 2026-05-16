@@ -75,7 +75,7 @@ export const defaultSiteData = {
     },
     {
       title: 'Advanced Textile Machinery',
-      description: 'Industrial lines engineered for singeing, mercerizing, padding, stenters, printing, and finishing.',
+      description: 'Industrial lines engineered for preprocess, advanced lab, dyeing, printing and finishing.',
     },
     {
       title: 'Quality Assurance',
@@ -116,7 +116,7 @@ export const defaultSiteData = {
       description: 'Stretch-aware processing engineered to protect recovery, seams, surface appearance, and uniform colour.',
     },
     {
-      title: 'Dyeing & Finishing',
+      title: 'Dyeing',
       description: 'Repeatable colour pipelines with finishing built for end-use performance and consistent fastness.',
     },
     {
@@ -124,8 +124,8 @@ export const defaultSiteData = {
       description: 'Rotary workflows for sharp definition, fine repeats, and production-scale reliability.',
     },
     {
-      title: 'Industrial Fabric Processing',
-      description: 'Processing pathways aligned to technical specifications, stability, and downstream performance.',
+      title: 'Finishing',
+      description: 'Finishing of different fabrics both mechanical and chemical to the customer satisfaction.',
     },
   ],
   products: [
@@ -311,7 +311,7 @@ export const defaultSiteData = {
       title: 'Processing disciplines each tuned to fibre behaviour',
       subtitle: 'Preprocess, dyeing, printing and finishing',
       sectionEyebrow: 'Programmes',
-      sectionTitle: 'Nine specialist programmes — one quality bar',
+      sectionTitle: 'Specialist programmes — one quality bar',
       sectionSubtitle: 'Select a programme to understand how we engineer outcomes for your fabric class.',
     },
     infrastructure: {

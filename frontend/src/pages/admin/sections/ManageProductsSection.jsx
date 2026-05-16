@@ -7,7 +7,7 @@ import ImageDropzone from '../components/ImageDropzone';
 import ConfirmModal from '../components/ConfirmModal';
 
 const CATEGORIES = [
-  'General',
+  '',
   'Processing',
   'Natural fibres',
   'Blends',
@@ -21,7 +21,7 @@ const CATEGORIES = [
 const emptyProduct = () => ({
   title: 'New product',
   number: 1,
-  category: 'General',
+  category: '',
   summary: '',
   description: '',
   body: '',
@@ -229,7 +229,7 @@ export default function ManageProductsSection({ products, onRefresh, showStatus 
                 </motion.div>
                 <div className="flex flex-1 flex-col p-5">
                   <p className="text-[10px] uppercase tracking-[0.28em] text-gold">
-                    {String(p.number ?? i + 1).padStart(2, '0')} — {p.category || 'General'}
+                    {String(p.number ?? i + 1).padStart(2, '0')} — {p.category || ''}
                   </p>
                   <h3 className="mt-2 font-serif text-lg text-snow">{p.title}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-slate">{p.summary}</p>
@@ -306,7 +306,7 @@ export default function ManageProductsSection({ products, onRefresh, showStatus 
             <div className="sm:col-span-2">
               <label className="text-xs uppercase tracking-wider text-slate">Category</label>
               <select
-                value={editing.category || 'General'}
+                value={editing.category || ''}
                 onChange={(e) => setEditing({ ...editing, category: e.target.value })}
                 className="mt-1 w-full rounded-xl border border-lineDark bg-charcoal/50 px-4 py-2.5 text-sm text-snow"
               >

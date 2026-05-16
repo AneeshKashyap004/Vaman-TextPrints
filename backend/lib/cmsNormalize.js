@@ -18,7 +18,7 @@ export function normalizeProduct(product, index = 0) {
     summary: p.summary || '',
     description,
     body: p.body || description,
-    category: p.category || 'General',
+    category: p.category || '',
     image: p.image || null,
     images: Array.isArray(p.images) ? p.images : [],
     features: Array.isArray(p.features) ? p.features : [],
