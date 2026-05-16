@@ -92,7 +92,7 @@
     },
     {
       "id": "4-bowl-and-5-bowl-calendars",
-      "name": "4 Bowl and 5 Bowl Calendars",
+      "name": "4 Bowl Calender",
       "description": "Calendering for finish, gloss, and fabric stability",
       "note": "For luster and surface.",
       "highlights": [],
@@ -195,6 +195,24 @@
           "path": "/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0.webp",
           "thumbPath": "/uploads/machinery/dhall-zero-zero-machines/mac-1778925721892-yoevm0-thumb.webp",
           "filename": "mac-1778925721892-yoevm0.webp"
+        }
+      ]
+    },
+    {
+      "id": "machine-1778951480977",
+      "name": " 5 Bowl Calendars",
+      "description": "For luster and surface.",
+      "note": "For luster and surface.",
+      "highlights": [],
+      "image": "http://localhost:5000/uploads/machinery/machine-1778951480977/mac-1778951481006-se772z.webp",
+      "images": [
+        {
+          "id": "mac-1778951481006-se772z",
+          "url": "http://localhost:5000/uploads/machinery/machine-1778951480977/mac-1778951481006-se772z.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/machine-1778951480977/mac-1778951481006-se772z-thumb.webp",
+          "path": "/uploads/machinery/machine-1778951480977/mac-1778951481006-se772z.webp",
+          "thumbPath": "/uploads/machinery/machine-1778951480977/mac-1778951481006-se772z-thumb.webp",
+          "filename": "mac-1778951481006-se772z.webp"
         }
       ]
     }
