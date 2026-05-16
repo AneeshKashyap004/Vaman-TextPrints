@@ -2,12 +2,21 @@
   "machinery": [
     {
       "id": "osthoff-senge-singeing-machine",
-      "name": "Osthoff Senge Singeing Machine",
+      "name": "Osthoff Singeing Machine",
       "description": "Surface fibre control for clean dye uptake",
       "note": "Surface fibre control for clean dye uptake",
       "highlights": [],
-      "image": null,
-      "images": []
+      "image": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
+      "images": [
+        {
+          "id": "mac-1778924170667-48dnev",
+          "url": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
+          "thumbUrl": "http://localhost:5000/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev-thumb.webp",
+          "path": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev.webp",
+          "thumbPath": "/uploads/machinery/osthoff-senge-singeing-machine/mac-1778924170667-48dnev-thumb.webp",
+          "filename": "mac-1778924170667-48dnev.webp"
+        }
+      ]
     },
     {
       "id": "dhall-cbr-machine",

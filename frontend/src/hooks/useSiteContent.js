@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SiteContentContext } from '../context/siteContentContext';
+import { SiteContentContext } from '../context/SiteContentContext';
 
 export function useSiteContent() {
   const ctx = useContext(SiteContentContext);

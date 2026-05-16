@@ -1,7 +1,8 @@
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { createContext, useEffect, useState, useMemo, useCallback } from 'react';
 import * as defaults from '../data/siteContent';
 import { cmsApi, productsApi, machineryApi } from '../lib/api';
-import { SiteContentContext } from './siteContentContext';
+
+export const SiteContentContext = createContext(null);
 
 function normalize(data, products, machinery) {
   const images = {

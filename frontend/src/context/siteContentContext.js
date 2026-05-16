@@ -1,3 +1,1 @@
-import { createContext } from 'react';
-
-export const SiteContentContext = createContext(null);
+export { SiteContentContext, SiteContentProvider } from './SiteContentContext.jsx';
